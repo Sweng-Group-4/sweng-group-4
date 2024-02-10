@@ -4,7 +4,7 @@ Shutterstock - AI Powered Multilingual Image Search
 ## How to run the prototype
 Download the sample animal images dataset [here](https://www.kaggle.com/datasets/iamsouravbanerjee/animal-image-dataset-90-different-animals/download?datasetVersionNumber=5).
 
-Unzip it and move the /animals/animals folder to inside /static
+Unzip it and move the /animals/animals folder to inside a new folder inside prototype called "static"
 
 Run the following command to install the requirements:
 
