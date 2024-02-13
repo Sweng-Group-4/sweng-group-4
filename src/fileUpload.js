@@ -1,7 +1,5 @@
-//test commit
-
 import React, {useState} from 'react';
-import './App.css'; // Import the App.css file
+import './fileUpload.css';
 
 function App() {
     const [selectedFile, setSelectedFile] = useState(null);
