@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './searchbar.js';
+import App from './searchbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 
