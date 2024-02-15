@@ -23,4 +23,5 @@ describe('App Component', () => {
         const firstResult = await screen.findByText('Result 1');
         expect(firstResult).toBeInTheDocument()});
       
+    // Test 3 : Check buttons work NEEDS TO BE COMPLETE
 })
