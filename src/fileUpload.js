@@ -26,6 +26,7 @@ function App() {
                     type="file"
                     accept="image/*"
                     onChange={handleFileChange}
+                    data-testid="file-upload" //for testing 
                 />
                 {selectedFile && (
                     <div className="file-info">
