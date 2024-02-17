@@ -1,19 +1,7 @@
-import React, { useRef, useState, useEffect} from 'react';
+import React, { useRef, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
-import './fileUpload.css';
-import './searchBar.css'
 
-// added for HTTP Request from React to Flask
-
-
-// class App extends React.Component { 
-//     constructor(props) {
-//             super(props);
-//             this.state = {apiResponse: ""};
-//         }
-// if I include the above and get rid of the App(), the constants would have to be declared outside of the component
-    function App() {
-    
+function App() {
     const searchInput = useRef(null);
     const [searchResults, setSearchResults] = useState([]);
     const [page, setPage] = useState(1);
@@ -21,61 +9,6 @@ import './searchBar.css'
     const [errorMsg, setErrorMsg] = useState('');
     const [loading, setLoading] = useState(false);
     const [language, setLanguage] = useState('en'); // Default language is English
-
-
-
-    // added for HTTP Request from React to Flask
-    // const callAPI = () => {
-    //     fetch("http://127.0.0.1:5000/search") //address for running on local device
-    //     .then(res => res.text())
-    //     .then(res => this.setState({ apiResponse: res}));
-    // };
-
-    var keepResults="";
-    const [resContent, setRes] = useState('');
-    //const [imgSrc, setImg] = useState('');
-    const [imgSrc, setImg] = useState([]);
-
-    // const searchImg = () => {
-    //     let searchName = document.getElementById("searchHere").value;
-    //     let searchLink = "http://127.0.0.1:5000/search_frontend?parameter=${"+searchName+"}";
-    //     fetch(searchLink)
-    //     .then((result) =>result.json()
-    //     .then((data) => {
-    //             //the data
-    //             keepResults = data[0]+",\n"+data[1]+",\n"+data[3];
-    //             setRes(keepResults);
-    //             setImg(data[0].replace("public/","/"));
-    //             console.log(data[1],data[2]);
-    //         })
-    //     );
-    // };
-    const searchImg = () => {
-        let searchName = document.getElementById("searchHere").value;
-        let searchLink = `http://127.0.0.1:5000/search_frontend?parameter=${searchName}`;
-        fetch(searchLink)
-        .then((result) => result.json())
-        .then((data) => {
-            const validImages = data
-                .slice(0, 4)
-                .map(img => img.replace("public/", "/"))
-                .filter(src => src.trim() !== ""); // Filter out empty or invalid paths
-            setImg(validImages);
-        })
-        .catch(error => {
-            console.error('Error fetching the images:', error);
-            setErrorMsg('Failed to load images.');
-        });
-    };
-    
-    // setTimeout sets a delay of 1 second before executing following code
-    //      5 results to display per page
-    //      20 total results available
-    //      start index gets calculated
-    //      array  of objects representing search results each with an id, title, and snippet
-    //  setSearchResults takes 'searchResults' with simulated search results
-    //  setTotalPages calculates the total number of pages to display search results
-    //      updates 'totalPages' variable
 
     // Simulating search results (replace this with actual search logic)
     const performSearch = (query, currentPage, lang) => {
@@ -96,9 +29,6 @@ import './searchBar.css'
                 snippet: `Snippet for result ${index + 1}`,
             })).slice(startIdx, endIdx);
 
-            console.log("here")
-            console.log(searchResults[0]);
-
             setSearchResults(searchResults);
             setTotalPages(Math.ceil(totalResults / resultsPerPage));
             setLoading(false);
@@ -118,64 +48,30 @@ import './searchBar.css'
     const handleLanguageChange = (event) => {
         setLanguage(event.target.value);
     };
-    
-    // added for HTTP Request from React to Flask
-    // const componentDidMount = () => {
-    //     this.callAPI();
-    // };
 
-    
-    // render() { do we need render?
     return (
-        <div
-        className = 'container'
-        style ={{
-            display : 'flex',
-            backgroundImage : 'url(https://images.unsplash.com/photo-1508311603478-ce574376c3cf?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)',
-            backgroundSize : 'cover',
-            alignItems : 'center',
-            minHeight : '100vh',
-            justifyContent : 'center',
-            flexDirection : 'column',
-        }}>
-            <h1 className='title' style ={{color : 'white'}}>Search</h1>
+        <div className='container' style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', minHeight: '100vh' }}>
+            <h1 className='title'>Image Search Engine</h1>
             {errorMsg && <p className='error-msg'>{errorMsg}</p>}
-            
-            <div className='click-to-search'>
+            <div className='search-section'>
+                <Form onSubmit={handleSearch}>
+                    <Form.Control
+                        type='search'
+                        placeholder='Type something to search...'
+                        className='search-input'
+                        ref={searchInput}
+                        style={{ width: '400px', height: '50px', fontSize: '18px', color: 'black' }}
+                    />
+                </Form>
             </div>
-
-            <div style={{ display: 'flex', alignItems: 'center' }}>
-            <input type="text" id="searchHere" style= {{borderRadius: '10px' , width: '250px', padding: '5px' }} data-testid="searchHere"/>
-            <button onClick={event => searchImg()} style ={{borderRadius:'10px', backgroundColor: 'lightblue', color: 'white', fontSize: '20px' }}>🔍</button>
+            <div className='language-section'>
+                <select value={language} onChange={handleLanguageChange} style={{ width: '400px', height: '50px', fontSize: '18px', marginBottom: '20px' }}>
+                    <option value="en">English</option>
+                    <option value="fr">French</option>
+                    <option value="es">Spanish</option>
+                    {/* Add more language options as needed */}
+                </select>
             </div>
-            {/* <p id="id1" style={{ whiteSpace: 'pre-line' }}>{resContent}</p>
-            <img src={imgSrc}/>
-             */}
-            <div className="grid-container">
-            {imgSrc.map((src, index) => {
-            if (src) { // Render only if src is truthy
-            return (
-                <div key={index} className="grid-item">
-                    <img src={src} alt={`Search Result ${index + 1}`} />
-                </div>
-              );
-            }
-             return null; // Otherwise, render nothing
-            })}
-            </div>
-
-
-            {/* {imgSrc.map((src, index) => (
-            <img key={index} src={src} alt={`Search Result ${index + 1}`} />
-            ))} */}
- 
-            {/*added for HTTP request from React to Flask*/}
-            {/* <div className="App">
-                <header className = "App-header">
-                    <p>{this.state.apiResponse}</p>
-                </header>
-            </div> */}
-
             {loading ? (
                 <p className='loading'>Searching...</p>
             ) : (
@@ -202,6 +98,4 @@ import './searchBar.css'
     );
 }
 
-
 export default App;
-

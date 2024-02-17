@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import './Sidebar.css';
 import {
     FaTh,
     FaBars,
@@ -7,12 +6,9 @@ import {
     FaRegChartBar,
     FaCommentAlt,
     FaShoppingBag,
-    //FaThList
+    FaThList
 }from "react-icons/fa";
 import { NavLink } from 'react-router-dom';
-import fileUploadIcon from './fileuploadicon.png';
-import searchBarIcon from './searchbaricon.png';
-import logo from './jellyfishLogo.png'
 
 
 const Sidebar = ({children}) => {
@@ -22,34 +18,34 @@ const Sidebar = ({children}) => {
         {
             path:"/",
             name:"Home",
-            icon:<FaTh style={{marginLeft: '0px', marginTop: '4.5px'}}/>
+            icon:<FaTh/>
         },
         {
             path:"/about",
             name:"About",
-            icon:<FaUserAlt style={{marginLeft: '0px', marginTop: '4px'}}/>
+            icon:<FaUserAlt/>
         },
         {
             path:"/search",
-            name:"Search",
-            icon:<img src={searchBarIcon} alt="Search" style={{ width: '22px', height: '22px', marginLeft: '-1px', marginTop: '4px'}} />
+            name:"Search Bar",
+            icon:<FaRegChartBar/>
         },
         {
             path:"/fileupload",
             name:"File Upload",
-            icon:<img src={fileUploadIcon} alt="Upload" style={{ width: '24px', height: '18px', marginLeft: '-2px', marginTop: '5px'}} />
+            icon:<FaShoppingBag/>
         },
         {
             path:"/Contact",
             name:"Contact",
-            icon:<FaCommentAlt style={{marginTop: '5px'}}/>
+            icon:<FaCommentAlt/>
         },
     ]
     return (
         <div className="container">
            <div style={{width: isOpen ? "200px" : "50px"}} className="sidebar">
-               <div className="top_section" style={{ justifyContent: isOpen ? "space-between" : "center"}}>
-               <img src={logo} alt="Sweng Group 4" style={{ display: isOpen ? "block" : "none", maxWidth: '100%', height: 'auto' }} className="logo" />
+               <div className="top_section">
+                   <h1 style={{display: isOpen ? "block" : "none"}} className="logo">Sweng Group 4</h1>
                    <div style={{marginLeft: isOpen ? "50px" : "0px"}} className="bars">
                        <FaBars onClick={toggle}/>
                    </div>
@@ -69,4 +65,3 @@ const Sidebar = ({children}) => {
 };
 
 export default Sidebar;
-

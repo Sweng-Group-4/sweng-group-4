@@ -1,80 +1,70 @@
-# sweng-group-4
-Shutterstock - AI Powered Multilingual Image Search
+# Getting Started with Create React App
 
-## How to run:
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-Firstly, clone the repository to your device.
+## Available Scripts
 
-Download the sample animal images dataset [here](https://www.kaggle.com/datasets/iamsouravbanerjee/animal-image-dataset-90-different-animals/download?datasetVersionNumber=5).
+In the project directory, you can run:
 
-Unzip it, and move the animals/animals/ folder to
+### `npm start`
 
-```
-sweng-group-4/public/
-```
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-Double check the path is correct, for example, you should find the dog/ images folder at
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
 
-```
-sweng-group-4/public/animals/animals/dog/
-```
+### `npm test`
 
-In the base repo directory (sweng-group-4/), run the following command to install the requirements:
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-```
-pip install -r requirements.txt
-```
+### `npm run build`
 
-Then, run the following command to embed the images (this will take a few minutes). (You may need to run python3 instead of python):
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-```
-python embed_images.py
-```
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-Now, run the following command to start the backend:
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-```
-python app.py
-```
+### `npm run eject`
 
-Then, in a separate terminal cd to:
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-```
-src/
-```
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-If you haven't done so already, install dependancies for the frontend:
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-```
-npm install
-```
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-To run the frontend, run:
+## Learn More
 
-```
-npm start
-```
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-In the browser a page should open to view the project.
+To learn React, check out the [React documentation](https://reactjs.org/).
 
-## Project Features
+### Code Splitting
 
-### Search Images
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-Using the side nav bar, you can head to the search page. From here, you can search our temporary database of animals. For good queries, we suggest:
+### Analyzing the Bundle Size
 
-1. "angry animal"
-2. "water animal"
-3. "a photo of a cat"
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Upload Images
+### Making a Progressive Web App
 
-Using the side nav bar, you can head to the upload page. Select a photo from your local device, add a user caption describing the photo, and then press upload. You can then search for your uploaded photo using the search page.
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Translation
+### Advanced Configuration
 
-Any user input in the search bar is automatically translated to English. Try the following queries:
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-1. "die Katze" (German: the cat)
-2. "une photo d'un dauphin" (French: a photo of a dolphin)
+### Deployment
 
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm run build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
