@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Image Search Results</title>
     <style>
@@ -8,6 +9,7 @@
             grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
             gap: 10px;
         }
+
         .grid-item {
             text-align: center;
             padding: 10px;
@@ -15,6 +17,7 @@
         }
     </style>
 </head>
+
 <body>
     <form action="/search" method="post">
         <input type="text" name="search_term" placeholder="Enter search term" required>
@@ -22,13 +25,24 @@
     </form>
 
     {% if image_filenames %}
-        <div class="grid">
-            {% for filename in image_filenames %}
-                <div class="grid-item">
-                    <img src="{{ filename }}" alt="{{ filename }}" style="max-width: 100%;">
-                </div>
-            {% endfor %}
+    <div class="grid">
+        {% for filename in image_filenames %}
+        <div class="grid-item">
+            <img src="{{ filename }}" alt="{{ filename }}" style="max-width: 100%;">
         </div>
+        {% endfor %}
+    </div>
     {% endif %}
+
+    <!--
+    file upload
+-->
+    <form action="/action_page.php">
+        <input type="file" id="myFile" name="filename">
+        <input type="submit">
+    </form>
+
 </body>
+
+
 </html>
