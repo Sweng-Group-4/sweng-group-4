@@ -57,3 +57,34 @@ def search_db(query):
     )
 
     return retrieve_matches(hits)
+
+# embed uploaded file
+
+def embed_upload(upload):
+    # tweaking to embed just the uploaded file rather than entire animal dataset
+    client = QdrantClient(path="vector_db")
+    model = SentenceTransformer('clip-ViT-B-32')
+    
+    client.recreate_collection (
+        collection_name = "animal_images", # collection to create or recreate
+        vectors_config=VectorParams(size=512, distance=Distance.COSINE)
+    )
+    
+    image_path = upload
+    file_emb = model.encode(Image.open(image_path))
+    
+    client.upsert (
+        collection_name="animal_images",
+        points=[
+            PointStruct(
+                id=1,           #assign a unique ID for the image
+                vector=file_emb.tolist(),
+                payload={"filepath": image_path}
+        )]
+    )
+    
+    # vectors.append([vector.length, file_emb])
+    # add new embedded file to the vector
+    
+    # after embedded and added to vector, display a message "upload complete, added to dataset"
+    
