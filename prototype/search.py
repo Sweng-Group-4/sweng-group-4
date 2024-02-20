@@ -70,9 +70,11 @@ def create_uploaded_embeddings(image):
     #    collection_name="animal_images",
     #    vectors_config=VectorParams(size=512, distance=Distance.COSINE),
     #)
+    
 
     vectors = []
     image.save('static/animals/uploadedByUser/'+image.filename)
+    allpics = len(get_filenames())
     #for f in tqdm(get_filenames()):
     img_emb = model.encode(Image.open('static/animals/uploadedByUser/'+image.filename))
     vectors.append(['static/animals/uploadedByUser/'+image.filename, img_emb])
@@ -81,7 +83,7 @@ def create_uploaded_embeddings(image):
         collection_name="animal_images",
         points=[
             PointStruct(
-                id=idx,
+                id=allpics,
                 vector=vector[1].tolist(),
                 payload={"filepath": vector[0]},
             )
