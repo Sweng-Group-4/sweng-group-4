@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './fileUpload.css'; // Import your CSS file for styling
+import './fileUpload.css'; 
 
 function App() {
     const [selectedFile, setSelectedFile] = useState(null);
@@ -15,13 +15,13 @@ function App() {
                 <h1>Image Analyzer</h1>
                 <p>Upload an image to analyze its content</p>
             </header>
-            <div className="background-image"></div> {/* This div holds the background image */}
+            <div className="background-image"></div> 
             <div className="app-content">
                 <input
                     type="file"
                     accept="image/*"
                     onChange={handleFileChange}
-                    data-testid="file-upload" //for testing 
+                    data-testid="file-upload" 
                 />
                 {selectedFile && (
                     <div className="file-info">

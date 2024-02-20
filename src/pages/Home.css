@@ -1,0 +1,29 @@
+.about-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    color: white;
+}
+
+/* .content-box {
+    background-color: rgba(255, 255, 255, 1); 
+    padding: 20px;
+    border-radius: 8px;
+    border: 2px solid rgba(255, 255, 255, 0.7);
+} */
+
+.title {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.description {
+    font-size: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
