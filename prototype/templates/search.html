@@ -37,9 +37,9 @@
     <!--
     file upload
 -->
-    <form action="/action_page.php", method="post">
-        <input type="file" id="myFile" name="filename">
-        <input type="submit">
+    <form action="/uploadImg" method="post" enctype="multipart/form-data">
+        <input type="file" name="myFile" accept="Image/jpeg">
+        <button type="submit">Upload this image!</button>
     </form>
 
 </body>

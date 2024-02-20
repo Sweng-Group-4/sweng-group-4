@@ -58,33 +58,34 @@ def search_db(query):
 
     return retrieve_matches(hits)
 
-# embed uploaded file
 
-def embed_upload(upload):
-    # tweaking to embed just the uploaded file rather than entire animal dataset
+
+
+def create_uploaded_embeddings(image):
+
     client = QdrantClient(path="vector_db")
     model = SentenceTransformer('clip-ViT-B-32')
-    
-    client.recreate_collection (
-        collection_name = "animal_images", # collection to create or recreate
-        vectors_config=VectorParams(size=512, distance=Distance.COSINE)
-    )
-    
-    image_path = upload
-    file_emb = model.encode(Image.open(image_path))
-    
-    client.upsert (
+
+    #client.recreate_collection(
+    #    collection_name="animal_images",
+    #    vectors_config=VectorParams(size=512, distance=Distance.COSINE),
+    #)
+
+    vectors = []
+    image.save('static/animals/uploadedByUser/'+image.filename)
+    #for f in tqdm(get_filenames()):
+    img_emb = model.encode(Image.open('static/animals/uploadedByUser/'+image.filename))
+    vectors.append(['static/animals/uploadedByUser/'+image.filename, img_emb])
+
+    client.upsert(
         collection_name="animal_images",
         points=[
             PointStruct(
-                id=1,           #assign a unique ID for the image
-                vector=file_emb.tolist(),
-                payload={"filepath": image_path}
-        )]
+                id=idx,
+                vector=vector[1].tolist(),
+                payload={"filepath": vector[0]},
+            )
+            for idx, vector in enumerate(vectors)
+        ]
     )
-    
-    # vectors.append([vector.length, file_emb])
-    # add new embedded file to the vector
-    
-    # after embedded and added to vector, display a message "upload complete, added to dataset"
-    
+    print("attempted upload")

@@ -1,8 +1,6 @@
 from flask import Flask, request, render_template
 from search import search_db
-from search import embed_upload
-import requests
-import io
+from search import create_uploaded_embeddings
 
 app = Flask(__name__)
 
@@ -22,25 +20,16 @@ def search():
 
         return render_template('search.html', image_filenames=results)
     
-# for uploading file
-@app.route('/action_page.php', methods=['POST'])
-def embed():
-    if request.method == 'POST':
-        
-        # I don't think I'm grabbing the actual file, also I don't have the correct file path rn
-        file = {'filename': open('filename', 'rb')} # instead of filename, should be path to file?
-        
-        upload = requests.post('http://127.0.0.1:5000/action_page.php', files = file)
-        if upload.status_code == 200:
-            print(filename)
-        else:
-            print('request failed with status code:', upload.status_code)
-        
-        
-    
-            
-            # upload = embed_upload(filename)
-        return render_template('search.html', image_filenames=filename)
+@app.route('/uploadImg', methods=['POST'])
+def uploadImg():
+    if 'myFile' in request.files:
+        uploaded_image = request.files['myFile']
+        print ("got here")
+
+        create_uploaded_embeddings(uploaded_image)
+
+        return "Thank you for uploading an image"
 
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=False, host='0.0.0.0', port=5000)
+
