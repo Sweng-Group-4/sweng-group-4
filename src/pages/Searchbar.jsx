@@ -1,5 +1,6 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect} from 'react';
 import { Button, Form } from 'react-bootstrap';
+
 
 // added for HTTP Request from React to Flask
 
@@ -26,6 +27,25 @@ import { Button, Form } from 'react-bootstrap';
     //     .then(res => res.text())
     //     .then(res => this.setState({ apiResponse: res}));
     // };
+
+    var keepResults="";
+    const [resContent, setRes] = useState('');
+    const [imgSrc, setImg] = useState('');
+
+    const searchImg = () => {
+        let searchName = document.getElementById("searchHere").value;
+        let searchLink = "http://127.0.0.1:5000/search_frontend?parameter=${"+searchName+"}";
+        fetch(searchLink)
+        .then((result) =>result.json()
+        .then((data) => {
+                //the data
+                keepResults = data[0]+",\n"+data[1]+",\n"+data[3];
+                setRes(keepResults);
+                //setImg("0d0af5a647.jpg");
+                console.log(data[1],data[2]);
+            })
+        );
+    };
 
     // Simulating search results (replace this with actual search logic)
     const performSearch = (query, currentPage, lang) => {
@@ -88,6 +108,8 @@ import { Button, Form } from 'react-bootstrap';
                     />
                 </Form>
             </div>
+            <div className='click-to-search'>
+            </div>
             <div className='language-section'>
                 <select value={language} onChange={handleLanguageChange} style={{ width: '400px', height: '50px', fontSize: '18px', marginBottom: '20px' }}>
                     <option value="en">English</option>
@@ -96,6 +118,15 @@ import { Button, Form } from 'react-bootstrap';
                     {/* Add more language options as needed */}
                 </select>
             </div>
+
+
+            <input type="text" id="searchHere"/>
+            <button onClick={event => searchImg()}>search</button>
+            <p id="id1" style={{ whiteSpace: 'pre-line' }}>{resContent}</p>
+            <img src={imgSrc}/>
+            <img src="test.jpg" alt="My Image" />
+
+
             {/*added for HTTP request from React to Flask*/}
             {/* <div className="App">
                 <header className = "App-header">
