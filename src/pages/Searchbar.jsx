@@ -1,7 +1,17 @@
 import React, { useRef, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 
-function App() {
+// added for HTTP Request from React to Flask
+
+
+// class App extends React.Component { 
+//     constructor(props) {
+//             super(props);
+//             this.state = {apiResponse: ""};
+//         }
+// if I include the above and get rid of the App(), the constants would have to be declared outside of the component
+    function App() {
+    
     const searchInput = useRef(null);
     const [searchResults, setSearchResults] = useState([]);
     const [page, setPage] = useState(1);
@@ -9,6 +19,13 @@ function App() {
     const [errorMsg, setErrorMsg] = useState('');
     const [loading, setLoading] = useState(false);
     const [language, setLanguage] = useState('en'); // Default language is English
+
+    // added for HTTP Request from React to Flask
+    const callAPI = () => {
+        fetch("http://127.0.0.1:5000/search") //address for running on local device
+        .then(res => res.text())
+        .then(res => this.setState({ apiResponse: res}));
+    };
 
     // Simulating search results (replace this with actual search logic)
     const performSearch = (query, currentPage, lang) => {
@@ -48,7 +65,14 @@ function App() {
     const handleLanguageChange = (event) => {
         setLanguage(event.target.value);
     };
+    
+    // added for HTTP Request from React to Flask
+    const componentDidMount = () => {
+        this.callAPI();
+    };
 
+    
+    // render() { do we need render?
     return (
         <div className='container' style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', minHeight: '100vh' }}>
             <h1 className='title'>Image Search Engine</h1>
@@ -72,6 +96,13 @@ function App() {
                     {/* Add more language options as needed */}
                 </select>
             </div>
+            {/*added for HTTP request from React to Flask*/}
+            <div className="App">
+                <header className = "App-header">
+                    <p>{this.state.apiResponse}</p>
+                </header>
+            </div>
+
             {loading ? (
                 <p className='loading'>Searching...</p>
             ) : (
@@ -98,4 +129,6 @@ function App() {
     );
 }
 
+
 export default App;
+
