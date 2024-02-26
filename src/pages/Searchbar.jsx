@@ -21,11 +21,11 @@ import { Button, Form } from 'react-bootstrap';
     const [language, setLanguage] = useState('en'); // Default language is English
 
     // added for HTTP Request from React to Flask
-    const callAPI = () => {
-        fetch("http://127.0.0.1:5000/search") //address for running on local device
-        .then(res => res.text())
-        .then(res => this.setState({ apiResponse: res}));
-    };
+    // const callAPI = () => {
+    //     fetch("http://127.0.0.1:5000/search") //address for running on local device
+    //     .then(res => res.text())
+    //     .then(res => this.setState({ apiResponse: res}));
+    // };
 
     // Simulating search results (replace this with actual search logic)
     const performSearch = (query, currentPage, lang) => {
@@ -67,9 +67,9 @@ import { Button, Form } from 'react-bootstrap';
     };
     
     // added for HTTP Request from React to Flask
-    const componentDidMount = () => {
-        this.callAPI();
-    };
+    // const componentDidMount = () => {
+    //     this.callAPI();
+    // };
 
     
     // render() { do we need render?
@@ -97,11 +97,11 @@ import { Button, Form } from 'react-bootstrap';
                 </select>
             </div>
             {/*added for HTTP request from React to Flask*/}
-            <div className="App">
+            {/* <div className="App">
                 <header className = "App-header">
                     <p>{this.state.apiResponse}</p>
                 </header>
-            </div>
+            </div> */}
 
             {loading ? (
                 <p className='loading'>Searching...</p>
