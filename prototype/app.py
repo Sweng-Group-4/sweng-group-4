@@ -1,8 +1,10 @@
 from flask import Flask, request, render_template
 from search import search_db
 from search import create_uploaded_embeddings
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route('/')
 def index():
@@ -19,6 +21,15 @@ def search():
         print(results)
 
         return render_template('search.html', image_filenames=results)
+    
+#temp for frontend testing
+@app.route('/search_frontend', methods=['GET'])
+def search_frontend():
+    search_term = request.args.get('parameter')
+     #= 'puppy'
+    results = search_db(search_term)
+    return results
+    
     
 @app.route('/uploadImg', methods=['POST'])
 def uploadImg():
