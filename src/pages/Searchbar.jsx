@@ -41,7 +41,7 @@ import { Button, Form } from 'react-bootstrap';
                 //the data
                 keepResults = data[0]+",\n"+data[1]+",\n"+data[3];
                 setRes(keepResults);
-                //setImg("0d0af5a647.jpg");
+                setImg(data[0].replace("static/","/"));
                 console.log(data[1],data[2]);
             })
         );
@@ -65,6 +65,9 @@ import { Button, Form } from 'react-bootstrap';
                 title: `Result ${index + 1}`,
                 snippet: `Snippet for result ${index + 1}`,
             })).slice(startIdx, endIdx);
+
+            console.log("here")
+            console.log(searchResults[0]);
 
             setSearchResults(searchResults);
             setTotalPages(Math.ceil(totalResults / resultsPerPage));
@@ -124,7 +127,6 @@ import { Button, Form } from 'react-bootstrap';
             <button onClick={event => searchImg()}>search</button>
             <p id="id1" style={{ whiteSpace: 'pre-line' }}>{resContent}</p>
             <img src={imgSrc}/>
-            <img src="test.jpg" alt="My Image" />
 
 
             {/*added for HTTP request from React to Flask*/}
