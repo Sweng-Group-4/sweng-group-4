@@ -41,7 +41,7 @@ import { Button, Form } from 'react-bootstrap';
                 //the data
                 keepResults = data[0]+",\n"+data[1]+",\n"+data[3];
                 setRes(keepResults);
-                setImg(data[0].replace("static/","/"));
+                setImg(data[0].replace("public/","/"));
                 console.log(data[1],data[2]);
             })
         );
