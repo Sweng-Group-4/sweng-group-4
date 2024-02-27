@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './fileUpload.css'; 
+//background-image: url('https://as1.ftcdn.net/v2/jpg/07/09/99/14/1000_F_709991427_RKOkVz4jtaLq8EEoLPFpCaSWY5s6wUwV.jpg');
 
 function App() {
     const [selectedFile, setSelectedFile] = useState(null);

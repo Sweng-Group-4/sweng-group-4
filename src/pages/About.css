@@ -1,15 +1,17 @@
 .about-container {
     position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
     background-size: cover;
     background-position: center;
 }
 
+.orange-box {
+    background-color: rgba(166, 25, 226, 0.759);
+    padding: 20px;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
 .content {
-    z-index: 1;
     text-align: center;
     color: white; 
 }
@@ -26,14 +28,24 @@
     padding: 0 20px;
 }
 
+.worker {
+    display: inline-block;
+    vertical-align: top;
+    margin: 10px;
+    text-align: center;
+}
 
-.orange-box {
-    position: absolute;
-    top: 50%; 
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: rgba(166, 25, 226, 0.759);
-    padding: 20px;
-    border: 2px solid black;
-    border-radius: 10px;
+.headshot {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.name {
+    font-weight: bold;
+}
+
+.worker-description {
+    font-size: 0.9rem;
 }
