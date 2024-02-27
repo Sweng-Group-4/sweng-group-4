@@ -66,18 +66,18 @@ const About = () => {
     {
         name: 'Natalie',
         description: 'Description of Natalie.',
-        image: VincentImage // Uses Vincent's image
+        image: VincentImage 
     },
     {
         name: 'William',
         description: 'Description of William.',
-        image: VincentImage // Uses Vincent's image
+        image: VincentImage 
     }
 ];
 
     
-    const topWorkers = workers.slice(0, 6); // First 6 workers
-    const bottomWorkers = workers.slice(6); // Remaining workers
+    const topWorkers = workers.slice(0, 6); 
+    const bottomWorkers = workers.slice(6); 
     
     return (
         <div className="about-container" style={{backgroundImage: `url(${backgroundImageUrl})`}}>
