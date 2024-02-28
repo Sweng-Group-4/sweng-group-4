@@ -1,9 +1,16 @@
 import React from 'react';
 import './About.css'; 
-import VincentImage from '../Vincent.png'; // Import the image
-import girlImage from '../Girl.png';
+import VincentImage from '../Vincent.png';
 import boyImage from '../Boy.png';
-
+import JuliaImage from '../Julia.png';
+import BrendanImage from '../Brendan.png';
+import AlexImage from '../Alex.png';
+import KateImage from '../Kate.png';
+import OisinImage from '../Oisin.png';
+import ShayImage from '../Shay.png';
+import ShivekImage from '../Shivek.png';
+import ZuzannaImage from '../Zuzanna.png';
+import SeanImage from '../Sean.png';
 
 const Worker = ({ name, description, image }) => (
     <div className="worker">
@@ -13,69 +20,70 @@ const Worker = ({ name, description, image }) => (
     </div>
 );
 
-
 const About = () => {
     const backgroundImageUrl = 'https://images.unsplash.com/photo-1577139996275-6681fdc2165a?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
     
     const workers = [
-    {
-        name: 'Vincent',
-        description: 'Description of Vincent.',
-        image: VincentImage
-    },
-    {
-        name: 'Kate',
-        description: 'Description of Kate.',
-        image: girlImage
-    },
-    {
-        name: 'Michael',
-        description: 'Description of Michael.',
-        image: boyImage
-    },
-    {
-        name: 'Emily',
-        description: 'Description of Emily.',
-        image: girlImage
-    },
-    {
-        name: 'Daniel',
-        description: 'Description of Daniel.',
-        image: boyImage
-    },
-    {
-        name: 'Sophia',
-        description: 'Description of Sophia.',
-        image: girlImage
-    },
-    {
-        name: 'Jacob',
-        description: 'Description of Jacob.',
-        image: boyImage
-    },
-    {
-        name: 'Olivia',
-        description: 'Description of Olivia.',
-        image: girlImage
-    },
-    {
-        name: 'Ethan',
-        description: 'Description of Ethan.',
-        image: boyImage
-    },
-    {
-        name: 'Natalie',
-        description: 'Description of Natalie.',
-        image: VincentImage 
-    },
-    {
-        name: 'William',
-        description: 'Description of William.',
-        image: VincentImage 
-    }
-];
+        {
+            name: 'Brendan',
+            description: 'Description of Brendan.',
+            image: BrendanImage
+        },
 
-    
+        {
+            name: 'Zuzanna',
+            description: 'Description of Zuzanna.',
+            image: ZuzannaImage
+        },
+        {
+            name: 'Oisin',
+            description: 'Description of Oisin.',
+            image: OisinImage
+        },
+        {
+            name: 'Vincent',
+            description: 'Description of Vincent.',
+            image: VincentImage
+        },
+        {
+            name: 'Shay',
+            description: 'Description of Shay.',
+            image: ShayImage
+        },
+         {
+            name: 'Sean',
+            description: 'Description of Sean.',
+            image: SeanImage
+        },
+        {
+            name: 'Julia',
+            description: 'Description of Julia.',
+            image: JuliaImage
+        },
+        
+        {
+            name: 'Alex',
+            description: 'Description of Alex.',
+            image: AlexImage
+        },
+        {
+            name: 'Kate',
+            description: 'Description of Kate.',
+            image: KateImage
+        },
+        {
+            name: 'Shivek',
+            description: 'Description of Shivek.',
+            image: ShivekImage
+        },
+        
+        {
+            name: 'Orson',
+            description: 'Description of Orson.',
+            image: boyImage
+        }
+    ];
+
     const topWorkers = workers.slice(0, 6); 
     const bottomWorkers = workers.slice(6); 
     
