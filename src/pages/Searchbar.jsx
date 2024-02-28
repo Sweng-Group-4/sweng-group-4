@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect} from 'react';
 import { Button, Form } from 'react-bootstrap';
-
+import './fileUpload.css';
 
 // added for HTTP Request from React to Flask
 
@@ -20,6 +20,8 @@ import { Button, Form } from 'react-bootstrap';
     const [errorMsg, setErrorMsg] = useState('');
     const [loading, setLoading] = useState(false);
     const [language, setLanguage] = useState('en'); // Default language is English
+
+
 
     // added for HTTP Request from React to Flask
     // const callAPI = () => {
@@ -97,37 +99,29 @@ import { Button, Form } from 'react-bootstrap';
     
     // render() { do we need render?
     return (
-        <div className='container' style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', minHeight: '100vh' }}>
-            <h1 className='title'>Image Search Engine</h1>
+        <div
+        class name = 'container'
+        style ={{
+            display : 'flex',
+            backgroundImage : 'url(https://images.unsplash.com/photo-1508311603478-ce574376c3cf?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)',
+            backgroundSize : 'cover',
+            alignItems : 'center',
+            minHeight : '100vh',
+            justifyContent : 'center',
+            flexDirection : 'column',
+        }}>
+            <h1 className='title' style ={{color : 'white'}}>Shutter Lens</h1>
             {errorMsg && <p className='error-msg'>{errorMsg}</p>}
-            <div className='search-section'>
-                <Form onSubmit={handleSearch}>
-                    <Form.Control
-                        type='search'
-                        placeholder='Type something to search...'
-                        className='search-input'
-                        ref={searchInput}
-                        style={{ width: '400px', height: '50px', fontSize: '18px', color: 'black' }}
-                    />
-                </Form>
-            </div>
+            
             <div className='click-to-search'>
             </div>
-            <div className='language-section'>
-                <select value={language} onChange={handleLanguageChange} style={{ width: '400px', height: '50px', fontSize: '18px', marginBottom: '20px' }}>
-                    <option value="en">English</option>
-                    <option value="fr">French</option>
-                    <option value="es">Spanish</option>
-                    {/* Add more language options as needed */}
-                </select>
+
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+            <input type="text" id="searchHere" style= {{borderRadius: '10px' , width: '250px', padding: '5px' }}/>
+            <button onClick={event => searchImg()} style ={{borderRadius:'10px', backgroundColor: 'lightblue', color: 'white', fontSize: '20px' }}>🔍</button>
             </div>
-
-
-            <input type="text" id="searchHere"/>
-            <button onClick={event => searchImg()}>search</button>
             <p id="id1" style={{ whiteSpace: 'pre-line' }}>{resContent}</p>
             <img src={imgSrc}/>
-
 
             {/*added for HTTP request from React to Flask*/}
             {/* <div className="App">
