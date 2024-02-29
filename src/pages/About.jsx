@@ -37,7 +37,7 @@ const About = () => {
         },
         {
             name: 'Sean Andrews',
-            description: 'AI-image-recognition leader - 3rd Year',
+            description: 'Unit Testing - 3rd Year',
             image: SeanImage
         },
         {
@@ -57,27 +57,27 @@ const About = () => {
         },
         {
             name: 'Orson O Sullivan',
-            description: 'Translation - 2nd Year',
+            description: 'Translation Dev- 2nd Year',
             image: OrsonImage
         },
         {
             name: 'Alex McHugh',
-            description: 'AI-image-recognition - 2nd Year',
+            description: 'AI Dev - 2nd Year',
             image: AlexImage
         },
         {
             name: 'Kate Burke',
-            description: 'Frontend - 2nd Year',
+            description: 'Frontend Dev- 2nd Year',
             image: KateImage
         },
         { 
             name: 'Shivek Agarwal',
-            description: 'Frontend - 2nd Year',
+            description: 'Frontend Dev- 2nd Year',
             image: ShivekImage
         },
         {
             name: 'Julia',
-            description: 'Backend - 2nd Year',
+            description: 'Backend Dev- 2nd Year',
             image: JuliaImage
         },
         
