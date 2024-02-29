@@ -1,7 +1,7 @@
 import React from 'react';
 import './About.css'; 
 import VincentImage from '../Vincent.png';
-import boyImage from '../Boy.png';
+import OrsonImage from '../Orson.png';
 import JuliaImage from '../Julia.png';
 import BrendanImage from '../Brendan.png';
 import AlexImage from '../Alex.png';
@@ -58,7 +58,7 @@ const About = () => {
         {
             name: 'Orson O Sullivan',
             description: 'Translation - 2nd Year',
-            image: boyImage
+            image: OrsonImage
         },
         {
             name: 'Alex McHugh',
