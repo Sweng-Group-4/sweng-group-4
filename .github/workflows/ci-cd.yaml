@@ -12,49 +12,49 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+      - uses: actions/checkout@v3
       
-    - name: Set up Node.js
-      uses: actions/setup-node@v3 
-      with:
-        node-version: '20' 
+      - name: Set up Node.js
+        uses: actions/setup-node@v3 
+        with:
+          node-version: '20' 
       
-    - name: Run a one-line script
-      run: echo Hello, world!
+      - name: Run a one-line script
+        run: echo Hello, world!
 
-    - name: Run a multi-line script
-      run: |
-        echo Add other actions to build,
-        echo test, and deploy your project.
+      - name: Run a multi-line script
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
 
-    - name: Install dependencies
-      run: npm install
+      - name: Install dependencies
+        run: npm install
 
-    - name: Run tests
-      run: npm test
+      - name: Run tests
+        run: npm test
 
-    - name: Build
-      run: npm run build
-   
-   - name: Upload artifact to enable deployment
-      uses: actions/upload-artifact@v3
-      with:
+      - name: Build
+        run: npm run build
+      
+      - name: Upload artifact to enable deployment
+        uses: actions/upload-artifact@v3
+        with:
           name: production-files
           path: ./dist
- # Deploy Job
-    deploy:
-        # Add a dependency to the build job
-        needs: build
-        # Specify runner + deployment step
-        runs-on: ubuntu-latest
-        steps:
-          - name: Download artifact
-            uses: actions/download-artifact@v3
-            with:
-              name: production-files
-              path: ./dist
-          - name: Deploy to GitHub Pages
-            uses: peaceiris/actions-gh-pages@v3
-            with:
-              github_token: ${{ secrets.CD }}
-              publish_dir: ./dist
+
+  deploy:
+    # Add a dependency to the build job
+    needs: build
+    # Specify runner + deployment step
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: production-files
+          path: ./dist
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.CD }}
+          publish_dir: ./dist
