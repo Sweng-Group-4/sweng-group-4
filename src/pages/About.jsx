@@ -25,63 +25,62 @@ const About = () => {
     
     const workers = [
         {
-            name: 'Brendan',
-            description: 'Description of Brendan.',
+            name: 'Brendan McCann',
+            description: 'Team Leader - 3rd Year',
             image: BrendanImage
         },
 
         {
-            name: 'Zuzanna',
-            description: 'Description of Zuzanna.',
-            image: ZuzannaImage
-        },
-        {
-            name: 'Oisin',
-            description: 'Description of Oisin.',
+            name: 'Anthony Gavril',
+            description: 'Translation Leader - 3rd Year',
             image: OisinImage
         },
         {
-            name: 'Vincent',
-            description: 'Description of Vincent.',
-            image: VincentImage
-        },
-        {
-            name: 'Shay',
-            description: 'Description of Shay.',
-            image: ShayImage
-        },
-         {
-            name: 'Sean',
-            description: 'Description of Sean.',
+            name: 'Sean Andrews',
+            description: 'AI-image-recognition leader - 3rd Year',
             image: SeanImage
         },
         {
-            name: 'Julia',
-            description: 'Description of Julia.',
-            image: JuliaImage
+            name: 'Vincent Mgbemena',
+            description: 'Frontend Leader - 3rd Year',
+            image: VincentImage
         },
-        
         {
-            name: 'Alex',
-            description: 'Description of Alex.',
+            name: 'Zuzanna Jerat',
+            description: 'Backend Leader - 3rd Year.',
+            image: ZuzannaImage
+        },
+        {
+            name: 'Shay McDonnell',
+            description: 'Backend Leader - 3rd year',
+            image: ShayImage
+        },
+        {
+            name: 'Orson O Sullivan',
+            description: 'Translation - 2nd Year',
+            image: boyImage
+        },
+        {
+            name: 'Alex McHugh',
+            description: 'AI-image-recognition - 2nd Year',
             image: AlexImage
         },
         {
-            name: 'Kate',
-            description: 'Description of Kate.',
+            name: 'Kate Burke',
+            description: 'Frontend - 2nd Year',
             image: KateImage
         },
-        {
-            name: 'Shivek',
-            description: 'Description of Shivek.',
+        { 
+            name: 'Shivek Agarwal',
+            description: 'Frontend - 2nd Year',
             image: ShivekImage
         },
-        
         {
-            name: 'Orson',
-            description: 'Description of Orson.',
-            image: boyImage
-        }
+            name: 'Julia',
+            description: 'Backend - 2nd Year',
+            image: JuliaImage
+        },
+        
     ];
 
     const topWorkers = workers.slice(0, 6); 
