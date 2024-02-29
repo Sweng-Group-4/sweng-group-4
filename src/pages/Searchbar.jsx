@@ -100,7 +100,7 @@ import './fileUpload.css';
     // render() { do we need render?
     return (
         <div
-        class name = 'container'
+        className = 'container'
         style ={{
             display : 'flex',
             backgroundImage : 'url(https://images.unsplash.com/photo-1508311603478-ce574376c3cf?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)',
@@ -117,7 +117,7 @@ import './fileUpload.css';
             </div>
 
             <div style={{ display: 'flex', alignItems: 'center' }}>
-            <input type="text" id="searchHere" style= {{borderRadius: '10px' , width: '250px', padding: '5px' }}/>
+            <input type="text" id="searchHere" style= {{borderRadius: '10px' , width: '250px', padding: '5px' }} data-testid="searchHere"/>
             <button onClick={event => searchImg()} style ={{borderRadius:'10px', backgroundColor: 'lightblue', color: 'white', fontSize: '20px' }}>🔍</button>
             </div>
             <p id="id1" style={{ whiteSpace: 'pre-line' }}>{resContent}</p>
