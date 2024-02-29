@@ -110,7 +110,7 @@ import './fileUpload.css';
             justifyContent : 'center',
             flexDirection : 'column',
         }}>
-            <h1 className='title' style ={{color : 'white'}}>Shutter Lens</h1>
+            <h1 className='title' style ={{color : 'white'}}>Search</h1>
             {errorMsg && <p className='error-msg'>{errorMsg}</p>}
             
             <div className='click-to-search'>
