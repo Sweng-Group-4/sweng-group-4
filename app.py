@@ -33,13 +33,17 @@ def search_frontend():
     
 @app.route('/uploadImg', methods=['POST'])
 def uploadImg():
-    if 'myFile' in request.files:
-        uploaded_image = request.files['myFile']
-        print ("got here")
+    try:
+        if 'myFile' in request.files:
+            uploaded_image = request.files['myFile']
+            print ("got here")
 
-        create_uploaded_embeddings(uploaded_image)
+            create_uploaded_embeddings(uploaded_image)
 
-        return "Thank you for uploading an image"
+            return 'Success', 200
+    except Exception as e:
+        print(e)
+        return 'Error', 500
 
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=False, host='0.0.0.0', port=5000)
