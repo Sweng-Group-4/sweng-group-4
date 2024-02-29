@@ -4,6 +4,7 @@ from qdrant_client import QdrantClient
 from qdrant_client.models import Distance, VectorParams, PointStruct
 import glob
 from tqdm import tqdm
+import os
 
 def get_filenames():
     files = glob.glob('public/animals/**/*.jpg',  
@@ -63,6 +64,8 @@ def search_db(query):
 
 def create_uploaded_embeddings(image):
 
+    print("attempting upload")
+
     client = QdrantClient(path="vector_db")
     model = SentenceTransformer('clip-ViT-B-32')
 
@@ -70,10 +73,16 @@ def create_uploaded_embeddings(image):
     #    collection_name="animal_images",
     #    vectors_config=VectorParams(size=512, distance=Distance.COSINE),
     #)
-    
 
     vectors = []
-    image.save('public/animals/uploadedByUser/'+image.filename)
+
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    save_path = os.path.join(BASE_DIR, 'public', 'animals', 'uploadedByUser')
+    os.makedirs(save_path, exist_ok=True)
+    image.save(os.path.join(save_path, image.filename))
+
+
+    print("saved image")
     allpics = len(get_filenames())
     #for f in tqdm(get_filenames()):
     img_emb = model.encode(Image.open('public/animals/uploadedByUser/'+image.filename))
