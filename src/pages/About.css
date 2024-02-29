@@ -36,8 +36,8 @@
 }
 
 .headshot {
-    width: 150px;
-    height: 150px;
+    width: 120px; 
+    height: 120px; 
     object-fit: cover;
     border-radius: 50%;
 }
@@ -47,5 +47,5 @@
 }
 
 .worker-description {
-    font-size: 0.9rem;
+    font-size: 0.8rem; 
 }
