@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import App from './fileUpload'; 
+import App from './FileUpload'; 
 // Test 1: Checks if Image Analyzer header Renders
 describe('App Component', () => {
   test('renders Image Analyzer header', () => {
