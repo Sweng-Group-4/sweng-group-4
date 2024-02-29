@@ -19,7 +19,7 @@ const Contact = () => {
             <div>
                 <h1>Contact Us</h1>
                 <p>We'd love to hear from you. Send us a message!</p>
-                {/* contact information */}
+                <p>Here is our Instagram: @sswegroup4</p>
             </div>
         </div>
     );
