@@ -81,6 +81,12 @@ def create_uploaded_embeddings(image):
     os.makedirs(save_path, exist_ok=True)
     image.save(os.path.join(save_path, image.filename))
 
+    image.seek(0)
+
+    save_path = os.path.join(BASE_DIR, 'static', 'public', 'animals', 'uploadedByUser')
+    os.makedirs(save_path, exist_ok=True)
+    image.save(os.path.join(save_path, image.filename))
+
 
     print("saved image")
     allpics = len(get_filenames())
