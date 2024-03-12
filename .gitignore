@@ -4,3 +4,4 @@ prototype/
 node_modules
 public/animals
 static/public/animals
+__pycache__/
