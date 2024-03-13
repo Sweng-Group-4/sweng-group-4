@@ -21,4 +21,4 @@ jobs:
         python -m pip install --upgrade pip
       
     - name: Run tests
-      run: python -m unittest test_translate_text.py
+      run: python -m unittest test.py
