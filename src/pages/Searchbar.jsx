@@ -1,5 +1,5 @@
-import React, { useRef, useState} from 'react';
-import { Button} from 'react-bootstrap';
+import React, { useRef, useState, useEffect} from 'react';
+import { Button, Form } from 'react-bootstrap';
 import './fileUpload.css';
 
 // added for HTTP Request from React to Flask
@@ -19,7 +19,7 @@ import './fileUpload.css';
     const [totalPages, setTotalPages] = useState(0);
     const [errorMsg, setErrorMsg] = useState('');
     const [loading, setLoading] = useState(false);
-    //const [language, setLanguage] = useState('en'); // Default language is English
+    const [language, setLanguage] = useState('en'); // Default language is English
 
 
 
@@ -77,19 +77,19 @@ import './fileUpload.css';
         }, 1000); // Simulated delay of 1 second
     };
 
-   // const resetSearch = () => {
-   //     setPage(1);
-   //     performSearch(searchInput.current.value, 1, language);
-   // };
+    const resetSearch = () => {
+        setPage(1);
+        performSearch(searchInput.current.value, 1, language);
+    };
 
-   // const handleSearch = (event) => { unused variable
-   //   event.preventDefault();
-   //     resetSearch();
-   // };
+    const handleSearch = (event) => {
+        event.preventDefault();
+        resetSearch();
+    };
 
-   // const handleLanguageChange = (event) => { unused variable
-   //     setLanguage(event.target.value);
-   // };
+    const handleLanguageChange = (event) => {
+        setLanguage(event.target.value);
+    };
     
     // added for HTTP Request from React to Flask
     // const componentDidMount = () => {
@@ -121,7 +121,7 @@ import './fileUpload.css';
             <button onClick={event => searchImg()} style ={{borderRadius:'10px', backgroundColor: 'lightblue', color: 'white', fontSize: '20px' }}>🔍</button>
             </div>
             <p id="id1" style={{ whiteSpace: 'pre-line' }}>{resContent}</p>
-            <img src={imgSrc} alt=""/> 
+            <img src={imgSrc}/>
 
             {/*added for HTTP request from React to Flask*/}
             {/* <div className="App">
