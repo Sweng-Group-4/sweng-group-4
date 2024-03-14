@@ -18,9 +18,14 @@ def search():
         
         # Search the database
         results = search_db(search_term)
-        print(results)
+        new_results = []
+        
+        for result in results:
+            print(result)
+            result = result.replace('public/', '/static/public/')
+            new_results.append(result)
 
-        return render_template('search.html', image_filenames=results)
+        return render_template('search.html', image_filenames=new_results)
     
 #temp for frontend testing
 @app.route('/search_frontend', methods=['GET'])
