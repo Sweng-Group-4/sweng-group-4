@@ -6,7 +6,7 @@ import {
     FaRegChartBar,
     FaCommentAlt,
     FaShoppingBag,
-    FaThList
+    //FaThList
 }from "react-icons/fa";
 import { NavLink } from 'react-router-dom';
 
