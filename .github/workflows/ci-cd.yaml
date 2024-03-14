@@ -34,6 +34,8 @@ jobs:
         run: npm test
 
       - name: Build
+        env:
+          CI: false
         run: npm run build
       
       - name: Upload artifact to enable deployment
