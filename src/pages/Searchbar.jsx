@@ -50,17 +50,24 @@ import './searchBar.css'
     //         })
     //     );
     // };
-
     const searchImg = () => {
         let searchName = document.getElementById("searchHere").value;
-        let searchLink = `http://127.0.0.1:5000/search_frontend?parameter=${searchName}`; // Use template literals correctly
+        let searchLink = `http://127.0.0.1:5000/search_frontend?parameter=${searchName}`;
         fetch(searchLink)
         .then((result) => result.json())
         .then((data) => {
-            const images = data.slice(0, 4).map(img => img.replace("public/","/"));
-            setImg(images);
+            const validImages = data
+                .slice(0, 4)
+                .map(img => img.replace("public/", "/"))
+                .filter(src => src.trim() !== ""); // Filter out empty or invalid paths
+            setImg(validImages);
+        })
+        .catch(error => {
+            console.error('Error fetching the images:', error);
+            setErrorMsg('Failed to load images.');
         });
     };
+    
     
 
     // Simulating search results (replace this with actual search logic)
@@ -134,16 +141,22 @@ import './searchBar.css'
             <input type="text" id="searchHere" style= {{borderRadius: '10px' , width: '250px', padding: '5px' }} data-testid="searchHere"/>
             <button onClick={event => searchImg()} style ={{borderRadius:'10px', backgroundColor: 'lightblue', color: 'white', fontSize: '20px' }}>🔍</button>
             </div>
-            // <p id="id1" style={{ whiteSpace: 'pre-line' }}>{resContent}</p>
-            //<img src={imgSrc}/>
-            
+            {/* <p id="id1" style={{ whiteSpace: 'pre-line' }}>{resContent}</p>
+            <img src={imgSrc}/>
+             */}
             <div className="grid-container">
-            {imgSrc.map((src, index) => (
-            <div key={index} className="grid-item">
-            <img src={src} alt={`Search Result ${index + 1}`} />
+            {imgSrc.map((src, index) => {
+            if (src) { // Render only if src is truthy
+            return (
+                <div key={index} className="grid-item">
+                    <img src={src} alt={`Search Result ${index + 1}`} />
+                </div>
+              );
+            }
+             return null; // Otherwise, render nothing
+            })}
             </div>
-            ))}
-            </div>
+
 
             {/* {imgSrc.map((src, index) => (
             <img key={index} src={src} alt={`Search Result ${index + 1}`} />
