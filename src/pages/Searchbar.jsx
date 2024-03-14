@@ -19,7 +19,7 @@ import './fileUpload.css';
     const [totalPages, setTotalPages] = useState(0);
     const [errorMsg, setErrorMsg] = useState('');
     const [loading, setLoading] = useState(false);
-    const [language, setLanguage] = useState('en'); // Default language is English
+    //const [language, setLanguage] = useState('en'); // Default language is English
 
 
 
@@ -77,10 +77,10 @@ import './fileUpload.css';
         }, 1000); // Simulated delay of 1 second
     };
 
-    const resetSearch = () => {
-        setPage(1);
-        performSearch(searchInput.current.value, 1, language);
-    };
+   // const resetSearch = () => {
+   //     setPage(1);
+   //     performSearch(searchInput.current.value, 1, language);
+   // };
 
    // const handleSearch = (event) => { unused variable
    //   event.preventDefault();
