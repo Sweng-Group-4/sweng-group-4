@@ -16,7 +16,7 @@ const Contact = () => {
 
     return (
         <div style={backgroundStyle}>
-            <div>
+            <div data-testid="contact">
                 <h1>Contact Us</h1>
                 <p>We'd love to hear from you. Send us a message!</p>
                 <p>Here is our Instagram: @sswegroup4</p>
