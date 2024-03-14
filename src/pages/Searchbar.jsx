@@ -1,5 +1,5 @@
-import React, { useRef, useState, useEffect} from 'react';
-import { Button, Form } from 'react-bootstrap';
+import React, { useRef, useState} from 'react';
+import { Button} from 'react-bootstrap';
 import './fileUpload.css';
 
 // added for HTTP Request from React to Flask
@@ -82,14 +82,14 @@ import './fileUpload.css';
         performSearch(searchInput.current.value, 1, language);
     };
 
-    const handleSearch = (event) => {
-        event.preventDefault();
-        resetSearch();
-    };
+   // const handleSearch = (event) => { unused variable
+   //   event.preventDefault();
+   //     resetSearch();
+   // };
 
-    const handleLanguageChange = (event) => {
-        setLanguage(event.target.value);
-    };
+   // const handleLanguageChange = (event) => { unused variable
+   //     setLanguage(event.target.value);
+   // };
     
     // added for HTTP Request from React to Flask
     // const componentDidMount = () => {
@@ -121,7 +121,7 @@ import './fileUpload.css';
             <button onClick={event => searchImg()} style ={{borderRadius:'10px', backgroundColor: 'lightblue', color: 'white', fontSize: '20px' }}>🔍</button>
             </div>
             <p id="id1" style={{ whiteSpace: 'pre-line' }}>{resContent}</p>
-            <img src={imgSrc}/>
+            <img src={imgSrc} alt=""/> 
 
             {/*added for HTTP request from React to Flask*/}
             {/* <div className="App">
