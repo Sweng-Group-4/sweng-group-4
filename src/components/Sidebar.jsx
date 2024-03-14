@@ -28,7 +28,7 @@ const Sidebar = ({children}) => {
         {
             path:"/search",
             name:"Search Bar",
-            icon:<FaRegChartBar/>
+            icon:<img src="https://icon-library.com/images/search-icon-white-png/search-icon-white-png-10.jpg" alt="Search" style={{ width: '24px', height: '24px' }} />
         },
         {
             path:"/fileupload",
