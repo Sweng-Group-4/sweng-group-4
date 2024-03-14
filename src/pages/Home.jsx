@@ -8,7 +8,7 @@ const About = () => {
         <div className="about-container" style={{backgroundImage: `url(${backgroundImageUrl})`}}>
             <div className="content-box">
                 <h1 className="title">Hi we are Jellyfish!</h1> {/* Add a title */}
-                <p className="description">
+                <p className="description" style={{textAlign: 'center'}}> 
                    Multilingual AI image Search Engine
                 </p>
             </div>
@@ -17,3 +17,4 @@ const About = () => {
 };
 
 export default About;
+
