@@ -130,6 +130,7 @@ import './searchBar.css'
             minHeight : '100vh',
             justifyContent : 'center',
             flexDirection : 'column',
+            textAlign : 'center'
         }}>
             <h1 className='title' style ={{color : 'white'}}>Search</h1>
             {errorMsg && <p className='error-msg'>{errorMsg}</p>}
@@ -137,31 +138,15 @@ import './searchBar.css'
             <div className='click-to-search'>
             </div>
 
-            <div style={{ display: 'flex', alignItems: 'center' }}>
-            <input type="text" id="searchHere" style= {{borderRadius: '10px' , width: '250px', padding: '5px' }} data-testid="searchHere"/>
-            <button onClick={event => searchImg()} style ={{borderRadius:'10px', backgroundColor: 'lightblue', color: 'white', fontSize: '20px' }}>🔍</button>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative' }}>
+            <button onClick={event => searchImg()} style={{ position: 'absolute', left: '10px', top: '50%', transform: 'translateY(-50%)', backgroundColor: 'transparent', border: 'none', padding: '5px' }}>
+            <img src="https://www.thinkafrica.fi/wp-content/uploads/2019/04/search-icon.png" style={{ width: '24px', height: '24px', verticalAlign: 'middle' }} />
+            </button>
+            <input type="text" id="searchHere" style={{ borderRadius: '24px', width: '350px', padding: '10px', fontSize: '16px', border: '1px solid #dfe1e5', outline: 'none', paddingLeft: '40px' }} data-testid="searchHere" placeholder="  Search..." />
             </div>
-            {/* <p id="id1" style={{ whiteSpace: 'pre-line' }}>{resContent}</p>
+            <p id="id1" style={{ whiteSpace: 'pre-line' }}>{resContent}</p>
             <img src={imgSrc}/>
-             */}
-            <div className="grid-container">
-            {imgSrc.map((src, index) => {
-            if (src) { // Render only if src is truthy
-            return (
-                <div key={index} className="grid-item">
-                    <img src={src} alt={`Search Result ${index + 1}`} />
-                </div>
-              );
-            }
-             return null; // Otherwise, render nothing
-            })}
-            </div>
 
-
-            {/* {imgSrc.map((src, index) => (
-            <img key={index} src={src} alt={`Search Result ${index + 1}`} />
-            ))} */}
- 
             {/*added for HTTP request from React to Flask*/}
             {/* <div className="App">
                 <header className = "App-header">
