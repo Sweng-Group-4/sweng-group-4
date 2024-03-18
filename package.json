@@ -2,6 +2,7 @@
   "name": "react-sidebar",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://sweng-group-4.github.io/sweng-group-4/",
   "dependencies": {
     "cra-template": "1.1.3",
     "react": "^18.0.0",

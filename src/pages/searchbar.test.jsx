@@ -19,7 +19,7 @@ describe('App Component', () => {
         expect(searchInput.value).toBe('test search');
 
         // Simulate user clicking the search button
-        const searchButton = screen.getByRole('button', { name: /🔍/ });
+        const searchButton = screen.getByTestId('searchButton');
         fireEvent.click(searchButton);
     });
 });
