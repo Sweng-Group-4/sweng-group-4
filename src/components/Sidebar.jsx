@@ -28,12 +28,12 @@ const Sidebar = ({children}) => {
         {
             path:"/search",
             name:"Search Bar",
-            icon:<img src="https://icon-library.com/images/search-icon-white-png/search-icon-white-png-10.jpg" alt="Search" style={{ width: '24px', height: '24px' }} />
+            icon:<img src="https://cdn.discordapp.com/attachments/1196390810632065084/1219624546282504292/search-icon-white-png-10.jpg?ex=660bfadf&is=65f985df&hm=0010cc9919baad4e9aa1ea080af42964d4ce9377bc8a1e21beb1cfd3ff9e9b48&" alt="Search" style={{ width: '24px', height: '24px' }} />
         },
         {
             path:"/fileupload",
             name:"File Upload",
-            icon:<FaShoppingBag/>
+            icon:<img src="https://cdn2.iconfinder.com/data/icons/cloud-data-glyph/64/166_cloud-data-computing-arrow-technology-upload-512.png" alt="Upload" style={{ width: '24px', height: '24px' }} />
         },
         {
             path:"/Contact",
