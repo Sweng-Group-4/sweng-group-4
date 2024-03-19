@@ -6,7 +6,7 @@ import App from './FileUpload';
 describe('App Component', () => {
   test('renders Image Analyzer header', () => {
     render(<App />);
-    expect(screen.getByText(/Image Analyzer/i)).toBeInTheDocument();
+    expect(screen.getByText(/Image Analyser/i)).toBeInTheDocument();
   });
 // Test 2: Checks if user cam upload a file
   test('allows the user to upload a file', () => {
