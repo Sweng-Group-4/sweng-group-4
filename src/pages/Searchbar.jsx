@@ -114,14 +114,20 @@ import './searchBar.css'
         <div
         className='container'
         style={{
-            display: 'flex',
+            
             backgroundImage: 'url(https://images.unsplash.com/photo-1508311603478-ce574376c3cf?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)',
             backgroundSize: 'cover',
+            backgroundAttachment: 'fixed',
+            display: 'flex',
             alignItems: 'center',
-            minHeight: '100vh',
             justifyContent: 'center',
             flexDirection: 'column',
-            textAlign: 'center'
+            zIndex: -1,
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
         }}>
             <h1 className='title' style={{color: 'white'}}>Search</h1>
             {errorMsg && <p className='error-msg'>{errorMsg}</p>}

@@ -29,8 +29,12 @@
     background-position: center;
     opacity: .8; 
     z-index: -1; 
+    
 }
 
+.app-content {
+    margin-top: 20px;
+}
 
 .file-info {
     margin-top: 10px;
