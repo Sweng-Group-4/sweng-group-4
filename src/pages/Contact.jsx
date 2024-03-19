@@ -33,9 +33,10 @@ const Contact = () => {
         <div style={backgroundStyle}>
             <div className="contact-box" style={boxStyle}>
                 <h1>Contact Us</h1>
+                <div style={{ marginTop: '20px' }}>
                 <p>We'd love to hear from you.</p>
                 <p>For further queries please email us at </p>
-                <p>Email: <a href="mailto:team@jellyfish.ie">team@jellyfish.ie</a></p>
+                <p>Email: <a href="mailto:team@jellyfish.ie">team@jellyfish.ie</a></p></div>
                 <div style={{ marginTop: '20px' }}>
                     <a href="https://www.instagram.com/sswegroup4" target="_blank" rel="noopener noreferrer" style={{ color: '#fff', marginRight: '10px' }}>
                         <FaInstagram />
