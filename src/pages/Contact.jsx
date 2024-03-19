@@ -31,7 +31,7 @@ const Contact = () => {
 
     return (
         <div style={backgroundStyle}>
-            <div className="contact-box" style={boxStyle}>
+            <div className="contact-box" style={boxStyle} data-testid="contact">
                 <h1>Contact Us</h1>
                 <div style={{ marginTop: '20px' }}>
                 <p>We'd love to hear from you.</p>
