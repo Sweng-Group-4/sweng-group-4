@@ -47,7 +47,7 @@ const About = () => {
         },
         {
             name: 'Zuzanna Jerat',
-            description: 'Backend Leader - 3rd Year.',
+            description: 'Backend Leader - 3rd Year',
             image: ZuzannaImage
         },
         {
@@ -83,16 +83,30 @@ const About = () => {
         
     ];
 
+    workers[7].description = "AI recognition";
+
     const topWorkers = workers.slice(0, 6); 
     const bottomWorkers = workers.slice(6); 
     
     return (
-        <div className="about-container" style={{backgroundImage: `url(${backgroundImageUrl})`}}>
+        <div className="about-container" style={{backgroundImage: `url(${backgroundImageUrl})`,
+        backgroundSize: 'cover',
+        backgroundAttachment: 'fixed',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        flexDirection: 'column',
+        zIndex: -1,
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%', }}>
             <div className="orange-box">
-                <div className="content">
+                <div className="content" style={{ padding: 0 }}>
                     <h1 className="title">About Us</h1>
                     <p className="description">
-                        Let's meet the team:
+                        Meet the team:
                     </p>
                     <div className="top-workers">
                         {topWorkers.map((worker, index) => (
