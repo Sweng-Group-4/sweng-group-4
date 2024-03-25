@@ -62,39 +62,25 @@ function App() {
     };
 
     return (
-        <div className="app-container" 
-        style={{
-            backgroundSize: 'cover',
-            backgroundAttachment: 'fixed',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            flexDirection: 'column',
-            zIndex: -1,
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-        }}>
+        <div className="app-container">
             <header className="app-header">
                 <h1>Image Analyser</h1>
                 <p>Upload an image to analyse its content</p>
             </header>
             <div className="background-image"></div>
             <div className="app-content">
-            <input
-                    type="text"
-                    placeholder="Enter the image description..."
-                    onChange={handleDescriptionChange}
-                    value={textualDescription}
-                    className="text-input"
-                />
                 <input
                     type="file"
                     accept="image/*"
                     onChange={handleFileChange}
                     data-testid="file-upload"
+                />
+                <input
+                    type="text"
+                    placeholder="Enter the image description..."
+                    onChange={handleDescriptionChange}
+                    value={textualDescription}
+                    className="text-input"
                 />
                 {error && <p className="error-message">{error}</p>}
                 {selectedFile && textualDescription.trim() && (
@@ -113,6 +99,3 @@ function App() {
 }
 
 export default App;
-
-
-
