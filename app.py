@@ -41,9 +41,11 @@ def uploadImg():
     try:
         if 'myFile' in request.files:
             uploaded_image = request.files['myFile']
+            # adding caption from form data
+            caption = request.form.get('caption')
             print ("got here")
 
-            create_uploaded_embeddings(uploaded_image)
+            create_uploaded_embeddings(uploaded_image, caption)
 
             return 'Success', 200
     except Exception as e:
