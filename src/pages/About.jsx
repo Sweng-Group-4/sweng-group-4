@@ -26,13 +26,13 @@ const About = () => {
     const workers = [
         {
             name: 'Brendan McCann',
-            description: 'Team Leader - 3rd Year',
+            description: 'Team Lead - 3rd Year',
             image: BrendanImage
         },
 
         {
             name: 'Anthony Gavril',
-            description: 'Translation Leader - 3rd Year',
+            description: 'Translation Lead - 3rd Year',
             image: OisinImage
         },
         {
@@ -42,17 +42,17 @@ const About = () => {
         },
         {
             name: 'Vincent Mgbemena',
-            description: 'Frontend Leader - 3rd Year',
+            description: 'Frontend Lead - 3rd Year',
             image: VincentImage
         },
         {
             name: 'Zuzanna Jerat',
-            description: 'Backend Leader - 3rd Year',
+            description: 'Backend Lead - 3rd Year',
             image: ZuzannaImage
         },
         {
             name: 'Shay McDonnell',
-            description: 'Backend Leader - 3rd year',
+            description: 'Backend Lead - 3rd year',
             image: ShayImage
         },
         {
@@ -76,7 +76,7 @@ const About = () => {
             image: ShivekImage
         },
         {
-            name: 'Julia',
+            name: 'Julia Nash',
             description: 'Backend Dev- 2nd Year',
             image: JuliaImage
         },
@@ -96,7 +96,6 @@ const About = () => {
         alignItems: 'center',
         justifyContent: 'center',
         flexDirection: 'column',
-        zIndex: -1,
         position: 'fixed',
         top: 0,
         left: 0,
