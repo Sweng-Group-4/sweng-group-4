@@ -69,18 +69,18 @@ function App() {
             </header>
             <div className="background-image"></div>
             <div className="app-content">
-            <input
-                    type="text"
-                    placeholder="Enter the image description..."
-                    onChange={handleDescriptionChange}
-                    value={textualDescription}
-                    className="text-input"
-                />
                 <input
                     type="file"
                     accept="image/*"
                     onChange={handleFileChange}
                     data-testid="file-upload"
+                />
+                <input
+                    type="text"
+                    placeholder="Enter the image description..."
+                    onChange={handleDescriptionChange}
+                    value={textualDescription}
+                    className="text-input"
                 />
                 {error && <p className="error-message">{error}</p>}
                 {selectedFile && textualDescription.trim() && (
@@ -99,6 +99,3 @@ function App() {
 }
 
 export default App;
-
-
-
