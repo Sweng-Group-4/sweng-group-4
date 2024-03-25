@@ -1,0 +1,7 @@
+prototype/
+.idea/
+.DS_Store
+node_modules
+public/animals
+static/public/animals
+__pycache__/
