@@ -14,7 +14,6 @@ const Contact = () => {
         textAlign: 'center',
         padding: '20px',
         flexDirection: 'column',
-        zIndex: -1,
         position: 'fixed',
         top: 0,
         left: 0,

@@ -122,7 +122,7 @@ import './searchBar.css'
             alignItems: 'center',
             justifyContent: 'center',
             flexDirection: 'column',
-            zIndex: -1,
+            
             position: 'fixed',
             top: 0,
             left: 0,

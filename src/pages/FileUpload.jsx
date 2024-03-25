@@ -62,7 +62,21 @@ function App() {
     };
 
     return (
-        <div className="app-container">
+        <div className="app-container" 
+        style={{
+            backgroundSize: 'cover',
+            backgroundAttachment: 'fixed',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            flexDirection: 'column',
+            zIndex: -1,
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+        }}>
             <header className="app-header">
                 <h1>Image Analyser</h1>
                 <p>Upload an image to analyse its content</p>
