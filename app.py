@@ -43,7 +43,7 @@ def uploadImg():
             uploaded_image = request.files['myFile']
             # adding caption from form data
             caption = request.form.get('caption')
-            print ("got here")
+            print ("got a caption")
 
             create_uploaded_embeddings(uploaded_image, caption)
 
