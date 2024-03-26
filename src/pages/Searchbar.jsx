@@ -1,7 +1,19 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect} from 'react';
 import { Button, Form } from 'react-bootstrap';
+import './fileUpload.css';
+import './searchBar.css'
 
-function App() {
+// added for HTTP Request from React to Flask
+
+
+// class App extends React.Component { 
+//     constructor(props) {
+//             super(props);
+//             this.state = {apiResponse: ""};
+//         }
+// if I include the above and get rid of the App(), the constants would have to be declared outside of the component
+    function App() {
+    
     const searchInput = useRef(null);
     const [searchResults, setSearchResults] = useState([]);
     const [page, setPage] = useState(1);
@@ -9,6 +21,46 @@ function App() {
     const [errorMsg, setErrorMsg] = useState('');
     const [loading, setLoading] = useState(false);
     const [language, setLanguage] = useState('en'); // Default language is English
+    const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+
+
+
+    // added for HTTP Request from React to Flask
+    // const callAPI = () => {
+    //     fetch("http://127.0.0.1:5000/search") //address for running on local device
+    //     .then(res => res.text())
+    //     .then(res => this.setState({ apiResponse: res}));
+    // };
+
+    var keepResults="";
+    const [resContent, setRes] = useState('');
+    const [imgSrc, setImg] = useState([]);
+    const [selectedImage, setSelectedImage] = useState(null);
+
+    const advanceImage = () => {
+        setCurrentImageIndex((prevIndex) => (prevIndex + 1) % imgSrc.length);
+      };
+      
+
+    
+      const searchImg = () => {
+        let searchName = document.getElementById("searchHere").value;
+        let searchLink = `http://127.0.0.1:5000/search_frontend?parameter=${searchName}`;
+        fetch(searchLink)
+        .then((result) => result.json())
+        .then((data) => {
+            const validImages = data.slice(0, 4).map(img => img.replace("public/", "/"));
+            console.log(validImages);
+            setImg(validImages);
+            setSelectedImage(null); // Reset selected image on new search
+        })
+        .catch(error => {
+            console.error('Error fetching the images:', error);
+            setErrorMsg('Failed to load images.');
+        });
+    };
+    
 
     // Simulating search results (replace this with actual search logic)
     const performSearch = (query, currentPage, lang) => {
@@ -29,6 +81,9 @@ function App() {
                 snippet: `Snippet for result ${index + 1}`,
             })).slice(startIdx, endIdx);
 
+            console.log("here")
+            console.log(searchResults[0]);
+
             setSearchResults(searchResults);
             setTotalPages(Math.ceil(totalResults / resultsPerPage));
             setLoading(false);
@@ -40,38 +95,71 @@ function App() {
         performSearch(searchInput.current.value, 1, language);
     };
 
-    const handleSearch = (event) => {
-        event.preventDefault();
-        resetSearch();
+    const handleImageSelect = (src) => {
+        setSelectedImage(src); // Update state to selected image
     };
+
 
     const handleLanguageChange = (event) => {
         setLanguage(event.target.value);
     };
+    
+    // added for HTTP Request from React to Flask
+    // const componentDidMount = () => {
+    //     this.callAPI();
+    // };
 
+    
+    // render() { do we need render?
     return (
-        <div className='container' style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', minHeight: '100vh' }}>
-            <h1 className='title'>Image Search Engine</h1>
+        <div
+        className='container'
+        style={{
+            
+            backgroundImage: 'url(https://images.unsplash.com/photo-1508311603478-ce574376c3cf?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)',
+            backgroundSize: 'cover',
+            backgroundAttachment: 'fixed',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            flexDirection: 'column',
+            
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+        }}>
+            <h1 className='title' style={{color: 'white'}}>Search</h1>
             {errorMsg && <p className='error-msg'>{errorMsg}</p>}
-            <div className='search-section'>
-                <Form onSubmit={handleSearch}>
-                    <Form.Control
-                        type='search'
-                        placeholder='Type something to search...'
-                        className='search-input'
-                        ref={searchInput}
-                        style={{ width: '400px', height: '50px', fontSize: '18px', color: 'black' }}
-                    />
-                </Form>
+            
+            <div className='click-to-search'>
             </div>
-            <div className='language-section'>
-                <select value={language} onChange={handleLanguageChange} style={{ width: '400px', height: '50px', fontSize: '18px', marginBottom: '20px' }}>
-                    <option value="en">English</option>
-                    <option value="fr">French</option>
-                    <option value="es">Spanish</option>
-                    {/* Add more language options as needed */}
-                </select>
+    
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative' }}>
+            <button data-testid="searchButton" onClick={event => searchImg()} style={{ position: 'absolute', left: '10px', top: '50%', transform: 'translateY(-50%)', backgroundColor: 'transparent', border: 'none', padding: '5px' }}>
+            <img src="https://www.thinkafrica.fi/wp-content/uploads/2019/04/search-icon.png" style={{ width: '24px', height: '24px', verticalAlign: 'middle' }} />
+            </button>
+            <input type="text" id="searchHere" style={{ borderRadius: '24px', width: '350px', padding: '10px', fontSize: '16px', border: '1px solid #dfe1e5', outline: 'none', paddingLeft: '40px' }} data-testid="searchHere" placeholder="  Search..." />
             </div>
+            <p id="id1" style={{ whiteSpace: 'pre-line' }}>{resContent}</p>
+    
+            {/* Grid view */}
+            <div className="grid-container" style={{ display: selectedImage ? 'none' : 'grid' }}>
+                {imgSrc.map((src, index) => (
+                    <div key={index} className="grid-item" onClick={() => handleImageSelect(src)}>
+                        <img src={src} alt={`Search result ${index + 1}`} />
+                    </div>
+                ))}
+            </div>
+    
+            {/* Expanded image view */}
+            {selectedImage && (
+                <div className="expanded-image-viewer" onClick={() => setSelectedImage(null)}>
+                    <img src={selectedImage} alt="Expanded view" />
+                </div>
+            )}
+    
             {loading ? (
                 <p className='loading'>Searching...</p>
             ) : (
@@ -96,6 +184,7 @@ function App() {
             )}
         </div>
     );
-}
+                        }    
 
 export default App;
+
