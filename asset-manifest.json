@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/sweng-group-4/static/css/main.3e3c3b85.css",
-    "main.js": "/sweng-group-4/static/js/main.37ea1ae7.js",
-    "static/js/787.b3906add.chunk.js": "/sweng-group-4/static/js/787.b3906add.chunk.js",
-    "static/media/Julia.png": "/sweng-group-4/static/media/Julia.245ccd3b626875660656.png",
-    "static/media/Brendan.png": "/sweng-group-4/static/media/Brendan.ed5496ea2362fee1252f.png",
-    "static/media/Vincent.png": "/sweng-group-4/static/media/Vincent.924ab96857f06623fd63.png",
-    "static/media/Shay.png": "/sweng-group-4/static/media/Shay.59f8a272f259a38474b2.png",
-    "static/media/Shivek.png": "/sweng-group-4/static/media/Shivek.28cead6c706b6cd444fd.png",
-    "static/media/Orson.png": "/sweng-group-4/static/media/Orson.341ec802390b66014e55.png",
-    "static/media/Oisin.png": "/sweng-group-4/static/media/Oisin.9b3c9f5c75368b1dc0bd.png",
-    "static/media/Zuzanna.png": "/sweng-group-4/static/media/Zuzanna.152f64683a5f3b7dc669.png",
-    "static/media/Alex.png": "/sweng-group-4/static/media/Alex.1a39cb5fada2d5879e32.png",
-    "static/media/Sean.png": "/sweng-group-4/static/media/Sean.dde1f671ff964878333d.png",
-    "static/media/Kate.png": "/sweng-group-4/static/media/Kate.ead992389f96f89c68d0.png",
-    "index.html": "/sweng-group-4/index.html",
-    "main.3e3c3b85.css.map": "/sweng-group-4/static/css/main.3e3c3b85.css.map",
-    "main.37ea1ae7.js.map": "/sweng-group-4/static/js/main.37ea1ae7.js.map",
-    "787.b3906add.chunk.js.map": "/sweng-group-4/static/js/787.b3906add.chunk.js.map"
+    "main.css": "/static/css/main.3e3c3b85.css",
+    "main.js": "/static/js/main.7d2c818b.js",
+    "static/js/787.b3906add.chunk.js": "/static/js/787.b3906add.chunk.js",
+    "static/media/Julia.png": "/static/media/Julia.245ccd3b626875660656.png",
+    "static/media/Brendan.png": "/static/media/Brendan.ed5496ea2362fee1252f.png",
+    "static/media/Vincent.png": "/static/media/Vincent.924ab96857f06623fd63.png",
+    "static/media/Shay.png": "/static/media/Shay.59f8a272f259a38474b2.png",
+    "static/media/Shivek.png": "/static/media/Shivek.28cead6c706b6cd444fd.png",
+    "static/media/Orson.png": "/static/media/Orson.341ec802390b66014e55.png",
+    "static/media/Oisin.png": "/static/media/Oisin.9b3c9f5c75368b1dc0bd.png",
+    "static/media/Zuzanna.png": "/static/media/Zuzanna.152f64683a5f3b7dc669.png",
+    "static/media/Alex.png": "/static/media/Alex.1a39cb5fada2d5879e32.png",
+    "static/media/Sean.png": "/static/media/Sean.dde1f671ff964878333d.png",
+    "static/media/Kate.png": "/static/media/Kate.ead992389f96f89c68d0.png",
+    "index.html": "/index.html",
+    "main.3e3c3b85.css.map": "/static/css/main.3e3c3b85.css.map",
+    "main.7d2c818b.js.map": "/static/js/main.7d2c818b.js.map",
+    "787.b3906add.chunk.js.map": "/static/js/787.b3906add.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.3e3c3b85.css",
-    "static/js/main.37ea1ae7.js"
+    "static/js/main.7d2c818b.js"
   ]
 }
