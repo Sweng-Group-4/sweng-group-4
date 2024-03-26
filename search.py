@@ -62,7 +62,7 @@ def search_db(query):
 
 
 
-def create_uploaded_embeddings(image):
+def create_uploaded_embeddings(image, caption):
 
     print("attempting upload")
 
