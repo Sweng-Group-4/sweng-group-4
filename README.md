@@ -8,3 +8,6 @@
 2. multilingual-search: python flask app that translates any input into english (from the url)
 3. frontend-connected: most up-to-date frontend branch. Currently trying to link backend with frontend in this branch.
 4. Frontend-Tests: simple unit testing of frontend features.
+
+brendan - test commit
+
