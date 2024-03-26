@@ -51,6 +51,7 @@ import './searchBar.css'
         .then((result) => result.json())
         .then((data) => {
             const validImages = data.slice(0, 4).map(img => img.replace("public/", "/"));
+            console.log(validImages);
             setImg(validImages);
             setSelectedImage(null); // Reset selected image on new search
         })
