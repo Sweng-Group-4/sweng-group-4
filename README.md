@@ -25,7 +25,7 @@ In the base repo directory (sweng-group-4/), run the following command to instal
 pip install -r requirements.txt
 ```
 
-Then, run the following command to embed the images (this will take a few minutes):
+Then, run the following command to embed the images (this will take a few minutes). (You may need to run python3 instead of python):
 
 ```
 python embed_images.py
