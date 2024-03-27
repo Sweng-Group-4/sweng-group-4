@@ -2,6 +2,9 @@
 Shutterstock - AI Powered Multilingual Image Search
 
 ## How to run:
+
+Firstly, clone the repository to your device.
+
 Download the sample animal images dataset [here](https://www.kaggle.com/datasets/iamsouravbanerjee/animal-image-dataset-90-different-animals/download?datasetVersionNumber=5).
 
 Unzip it, and move the downloaded /animals/animals/ to 
