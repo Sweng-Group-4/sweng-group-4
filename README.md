@@ -37,7 +37,7 @@ Now, run the following command to start the backend:
 python app.py
 ```
 
-Then, cd to
+Then, in a separate terminal cd to:
 
 ```
 src/
