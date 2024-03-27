@@ -7,7 +7,7 @@ Firstly, clone the repository to your device.
 
 Download the sample animal images dataset [here](https://www.kaggle.com/datasets/iamsouravbanerjee/animal-image-dataset-90-different-animals/download?datasetVersionNumber=5).
 
-Unzip it, and move the downloaded /animals/animals/ to 
+Unzip it, and move the downloaded folder to (the animals/animals/ nesting is necessary). 
 
 ```
 sweng-group-4/public/
