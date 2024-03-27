@@ -13,10 +13,10 @@ Unzip it, and move the animals/animals/ folder to
 sweng-group-4/public/
 ```
 
-Double check the path is correct, for example, you should find the dogs/ images folder at
+Double check the path is correct, for example, you should find the dog/ images folder at
 
 ```
-sweng-group-4/public/animals/animals/dogs/
+sweng-group-4/public/animals/animals/dog/
 ```
 
 In the base repo directory (sweng-group-4/), run the following command to install the requirements:
