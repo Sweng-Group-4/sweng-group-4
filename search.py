@@ -11,6 +11,12 @@ def get_filenames():
                    recursive = True) 
     return files
 
+# def retrieve_matches(hits):
+#     matches = []
+#     for hit in hits:
+#         matches.append({"filepath": hit.payload["filepath"], "caption": hit.payload.get("caption", "Caption not found")})
+#     return matches
+
 def retrieve_matches(hits):
     filenames = []
     for hit in hits:
@@ -94,7 +100,8 @@ def create_uploaded_embeddings(image, caption):
             PointStruct(
                 id=allpics,
                 vector=vector[1].tolist(),
-                payload={"filepath": vector[0]},
+                payload={"filepath": vector[0], "caption": caption},
+                # payload={"filepath": vector[0]}
             )
             for idx, vector in enumerate(vectors)
         ]
