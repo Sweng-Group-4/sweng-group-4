@@ -22,16 +22,8 @@ import './searchBar.css'
     const [loading, setLoading] = useState(false);
     const [language, setLanguage] = useState('en'); // Default language is English
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
-
-
-
-    // added for HTTP Request from React to Flask
-    // const callAPI = () => {
-    //     fetch("http://127.0.0.1:5000/search") //address for running on local device
-    //     .then(res => res.text())
-    //     .then(res => this.setState({ apiResponse: res}));
-    // };
+    // adding for retieving captions
+    const [captions, setCaptions] = useState({});
 
     var keepResults="";
     const [resContent, setRes] = useState('');
@@ -41,6 +33,29 @@ import './searchBar.css'
     const advanceImage = () => {
         setCurrentImageIndex((prevIndex) => (prevIndex + 1) % imgSrc.length);
       };
+
+      const fetchCaptions =  (imagePath) => {
+        if (!imagePath) {
+            console.log("no path");
+            return;
+        }
+    
+        try {
+            const response =  fetch(`/getCaption?imagePath=${imagePath}`);
+            console.log("inside fetchCaption")
+            console.log({imagePath});
+            if (!response.ok) {
+                console.log("invalid path");
+                return;
+            }
+            const data = response.text(); // Assuming the response is text data
+            return (
+                <p>{data}</p>
+            );
+        } catch (error) {
+            console.log("error :(", error);
+        }
+    };
       
       const searchImg = () => {
 
@@ -116,14 +131,7 @@ import './searchBar.css'
     const handleLanguageChange = (event) => {
         setLanguage(event.target.value);
     };
-    
-    // added for HTTP Request from React to Flask
-    // const componentDidMount = () => {
-    //     this.callAPI();
-    // };
-
-    
-    // render() { do we need render?
+   
     return (
         <div
         className='container'
@@ -170,6 +178,7 @@ import './searchBar.css'
             {selectedImage && (
                 <div className="expanded-image-viewer" onClick={() => setSelectedImage(null)}>
                     <img src={selectedImage} alt="Expanded view" />
+                    <p>{fetchCaptions(selectedImage)}</p>
                 </div>
             )}
     

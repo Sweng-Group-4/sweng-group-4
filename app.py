@@ -1,7 +1,13 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, jsonify
 from search import search_db
 from search import create_uploaded_embeddings
+from PIL import Image
 from flask_cors import CORS
+from qdrant_client import QdrantClient
+from qdrant_client.models import Distance, VectorParams, PointStruct
+import glob
+from tqdm import tqdm
+import os
 
 app = Flask(__name__)
 CORS(app)
@@ -34,7 +40,19 @@ def search_frontend():
      #= 'puppy'
     results = search_db(search_term)
     return results
-    
+
+@app.route('/getCaption', methods=['GET'])
+def get_image_caption():
+    if request.method == 'GET':
+        image_path = request.args.get('imagePath')
+        caption = None
+        if image_path:
+            # Call search_db function to retrieve matches
+            matches = search_db(image_path)
+            if matches:
+                # Extract the caption from the payload of the first match
+                caption = matches[0]["caption"]
+        return jsonify({'caption': caption})
     
 @app.route('/uploadImg', methods=['POST'])
 def uploadImg():
