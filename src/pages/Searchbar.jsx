@@ -41,6 +41,9 @@ import './searchBar.css'
     const advanceImage = () => {
         setCurrentImageIndex((prevIndex) => (prevIndex + 1) % imgSrc.length);
       };
+      
+      const searchImg = () => {
+
         let searchName = document.getElementById("searchHere").value;
       
         let translateSearchLink = `http://orosulli.pythonanywhere.com/?translate=${searchName}`;
@@ -67,9 +70,11 @@ import './searchBar.css'
                 console.error('Error fetching the images:', error);
                 setErrorMsg('Failed to load images.');
             });
-        }) 
+
+
+        })     
     };
-    
+   
 
     // Simulating search results (replace this with actual search logic)
     const performSearch = (query, currentPage, lang) => {
@@ -107,7 +112,6 @@ import './searchBar.css'
     const handleImageSelect = (src) => {
         setSelectedImage(src); // Update state to selected image
     };
-
 
     const handleLanguageChange = (event) => {
         setLanguage(event.target.value);
@@ -196,4 +200,3 @@ import './searchBar.css'
                         }    
 
 export default App;
-
