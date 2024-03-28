@@ -41,19 +41,18 @@ import './searchBar.css'
         }
     
         try {
-            const response =  fetch(`/getCaption?imagePath=${imagePath}`);
-            console.log("inside fetchCaption")
-            console.log({imagePath});
-            if (!response.ok) {
-                console.log("invalid path");
-                return;
-            }
-            const data = response.text(); // Assuming the response is text data
-            return (
-                <p>{data}</p>
-            );
+            let s = `http://127.0.0.1:5000/getCaption?parameter=${imagePath}`;
+            fetch(s)
+            .then((result) => result.json())
+            .then((data) => {
+                console.log(data);
+            })
+            .catch(error => {
+                console.error('Error fetching the caption:', error);
+            });
+
         } catch (error) {
-            console.log("error :(", error);
+            console.log("error", error);
         }
     };
       
