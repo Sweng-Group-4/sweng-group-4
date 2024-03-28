@@ -70,3 +70,11 @@ Using the side nav bar, you can head to the search page. From here, you can sear
 ### Upload Images
 
 Using the side nav bar, you can head to the upload page. Select a photo from your local device, add a user caption describing the photo, and then press upload. You can then search for your uploaded photo using the search page.
+
+### Translation
+
+Any user input in the search bar is automatically translated to English. Try the following queries:
+
+1. "die Katze" (German: the cat)
+2. "une photo d'un dauphin" (French: a photo of a dolphin)
+
