@@ -41,24 +41,33 @@ import './searchBar.css'
     const advanceImage = () => {
         setCurrentImageIndex((prevIndex) => (prevIndex + 1) % imgSrc.length);
       };
-      
-
-    
-      const searchImg = () => {
         let searchName = document.getElementById("searchHere").value;
-        let searchLink = `http://127.0.0.1:5000/search_frontend?parameter=${searchName}`;
-        fetch(searchLink)
-        .then((result) => result.json())
+      
+        let translateSearchLink = `http://orosulli.pythonanywhere.com/?translate=${searchName}`;
+        
+        fetch(translateSearchLink)
+        .then((res) => res.json())
         .then((data) => {
-            const validImages = data.slice(0, 4).map(img => img.replace("public/", "/"));
-            console.log(validImages);
-            setImg(validImages);
-            setSelectedImage(null); // Reset selected image on new search
-        })
-        .catch(error => {
-            console.error('Error fetching the images:', error);
-            setErrorMsg('Failed to load images.');
-        });
+
+            let translatedString = JSON.stringify(data);
+            let messyStringFixSoon = translatedString.replace("{", "").replace("}", "").replace(',','').replace(":","").replaceAll('"',"").replace("input","");
+            console.log(messyStringFixSoon);
+
+            let searchLink = `http://127.0.0.1:5000/search_frontend?parameter=${messyStringFixSoon}`;
+
+            fetch(searchLink)
+            .then((result) => result.json())
+            .then((data) => {
+                const validImages = data.slice(0, 4).map(img => img.replace("public/", "/"));
+                console.log(validImages);
+                setImg(validImages);
+                setSelectedImage(null); // Reset selected image on new search
+            })
+            .catch(error => {
+                console.error('Error fetching the images:', error);
+                setErrorMsg('Failed to load images.');
+            });
+        }) 
     };
     
 
