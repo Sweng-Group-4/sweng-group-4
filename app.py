@@ -43,16 +43,18 @@ def search_frontend():
 
 @app.route('/getCaption', methods=['GET'])
 def get_image_caption():
-    if request.method == 'GET':
-        image_path = request.args.get('imagePath')
-        caption = None
-        if image_path:
+    print("reached getCaption")
+    #if request.method == 'GET':
+    #    image_path = request.args.get('imagePath')
+    #    caption = None
+    #    if image_path:
             # Call search_db function to retrieve matches
-            matches = search_db(image_path)
-            if matches:
+    #        matches = search_db(image_path)
+    #        if matches:
                 # Extract the caption from the payload of the first match
-                caption = matches[0]["caption"]
-        return jsonify({'caption': caption})
+    #            caption = matches[0]["caption"]
+    #    return jsonify({'caption': caption})
+    return "temp"
     
 @app.route('/uploadImg', methods=['POST'])
 def uploadImg():
