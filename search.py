@@ -19,9 +19,16 @@ def get_filenames():
 
 def retrieve_matches(hits):
     filenames = []
+    filedesc = []
     for hit in hits:
         filenames.append(hit.payload["filepath"])
-    return filenames
+        if "caption" in hit.payload:
+            #filenames[-1] += "desc:" + hit.payload["caption"]
+            filedesc.append(hit.payload["caption"])
+        else:
+            #filenames[-1] += "&desc:from COCO dataset"
+            filedesc.append("from COCO dataset")
+    return filenames, filedesc
 
 def create_embeddings():
 
