@@ -38,8 +38,8 @@ def search():
 def search_frontend():
     search_term = request.args.get('parameter')
      #= 'puppy'
-    results = search_db(search_term)
-    return results
+    resultsfiles, resultscaptions = search_db(search_term)
+    return jsonify({'file': resultsfiles, 'caption': resultscaptions})
 
 @app.route('/getCaption', methods=['GET'])
 def get_image_caption():
