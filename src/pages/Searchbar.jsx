@@ -178,7 +178,6 @@ import './searchBar.css'
             {selectedImage && (
                 <div className="expanded-image-viewer" onClick={() => setSelectedImage(null)}>
                     <img src={selectedImage} alt="Expanded view" />
-                    <p>{fetchCaptions(selectedImage)}</p>
                 </div>
             )}
     
