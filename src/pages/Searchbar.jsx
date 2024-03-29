@@ -75,7 +75,8 @@ import './searchBar.css'
             fetch(searchLink)
             .then((result) => result.json())
             .then((data) => {
-                const validImages = data.slice(0, 4).map(img => img.replace("public/", "/"));
+                console.log(data);
+                const validImages = data.file.slice(0, 4).map(img => img.replace("public/", "/"));
                 console.log(validImages);
                 setImg(validImages);
                 setSelectedImage(null); // Reset selected image on new search
