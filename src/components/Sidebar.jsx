@@ -9,6 +9,8 @@ import {
     FaThList
 }from "react-icons/fa";
 import { NavLink } from 'react-router-dom';
+import fileUploadIcon from './fileuploadicon.png';
+import searchBarIcon from './seachbaricon.png';
 
 
 const Sidebar = ({children}) => {
@@ -28,12 +30,12 @@ const Sidebar = ({children}) => {
         {
             path:"/search",
             name:"Search Bar",
-            icon:<img src="https://cdn.discordapp.com/attachments/1196390810632065084/1219624546282504292/search-icon-white-png-10.jpg?ex=660bfadf&is=65f985df&hm=0010cc9919baad4e9aa1ea080af42964d4ce9377bc8a1e21beb1cfd3ff9e9b48&" alt="Search" style={{ width: '24px', height: '24px' }} />
+            icon:<img src={searchBarIcon} alt="Search" style={{ width: '24px', height: '24px', marginRight: '5px' }} />
         },
         {
             path:"/fileupload",
             name:"File Upload",
-            icon:<img src="https://cdn2.iconfinder.com/data/icons/cloud-data-glyph/64/166_cloud-data-computing-arrow-technology-upload-512.png" alt="Upload" style={{ width: '24px', height: '24px' }} />
+            icon:<img src={fileUploadIcon} alt="Upload" style={{ width: '24px', height: '18px', marginRight: '4px'}} />
         },
         {
             path:"/Contact",
@@ -44,7 +46,7 @@ const Sidebar = ({children}) => {
     return (
         <div className="container">
            <div style={{width: isOpen ? "200px" : "50px"}} className="sidebar">
-               <div className="top_section">
+               <div className="top_section" style={{ justifyContent: isOpen ? "space-between" : "center"}}>
                    <h1 style={{display: isOpen ? "block" : "none"}} className="logo">Sweng Group 4</h1>
                    <div style={{marginLeft: isOpen ? "50px" : "0px"}} className="bars">
                        <FaBars onClick={toggle}/>
@@ -65,3 +67,4 @@ const Sidebar = ({children}) => {
 };
 
 export default Sidebar;
+
