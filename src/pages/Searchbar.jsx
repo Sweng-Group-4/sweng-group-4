@@ -3,7 +3,17 @@ import { Button, Form } from 'react-bootstrap';
 import './fileUpload.css';
 import './searchBar.css'
 
-function App() {
+// added for HTTP Request from React to Flask
+
+
+// class App extends React.Component { 
+//     constructor(props) {
+//             super(props);
+//             this.state = {apiResponse: ""};
+//         }
+// if I include the above and get rid of the App(), the constants would have to be declared outside of the component
+    function App() {
+    
     const searchInput = useRef(null);
     const [searchResults, setSearchResults] = useState([]);
     const [page, setPage] = useState(1);
@@ -12,31 +22,19 @@ function App() {
     const [loading, setLoading] = useState(false);
     const [language, setLanguage] = useState('en'); // Default language is English
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
+    // adding for retieving captions
     const [captions, setCaptions] = useState({});
+
+    var keepResults="";
     const [resContent, setRes] = useState('');
     const [imgSrc, setImg] = useState([]);
     const [selectedImage, setSelectedImage] = useState(null);
 
-    useEffect(() => {
-        // Add event listener to detect Enter key press
-        const handleKeyPress = (event) => {
-            if (event.key === 'Enter') {
-                searchImg();
-            }
-        };
-        // Attach event listener to the input field
-        searchInput.current.addEventListener('keypress', handleKeyPress);
-        // Cleanup function to remove event listener
-        return () => {
-            searchInput.current.removeEventListener('keypress', handleKeyPress);
-        };
-    }, []);
-
     const advanceImage = () => {
         setCurrentImageIndex((prevIndex) => (prevIndex + 1) % imgSrc.length);
-    };
+      };
 
-    const fetchCaptions = (imagePath) => {
+      const fetchCaptions =  (imagePath) => {
         if (!imagePath) {
             console.log("no path");
             return;
@@ -52,18 +50,22 @@ function App() {
             .catch(error => {
                 console.error('Error fetching the caption:', error);
             });
+
         } catch (error) {
             console.log("error", error);
         }
     };
       
-    const searchImg = () => {
+      const searchImg = () => {
+
         let searchName = document.getElementById("searchHere").value;
+      
         let translateSearchLink = `http://orosulli.pythonanywhere.com/?translate=${searchName}`;
         
         fetch(translateSearchLink)
         .then((res) => res.json())
         .then((data) => {
+
             let translatedString = JSON.stringify(data);
             let messyStringFixSoon = translatedString.replace("{", "").replace("}", "").replace(',','').replace(":","").replaceAll('"',"").replace("input","");
             console.log(messyStringFixSoon);
@@ -83,8 +85,11 @@ function App() {
                 console.error('Error fetching the images:', error);
                 setErrorMsg('Failed to load images.');
             });
+
+
         })     
     };
+   
 
     // Simulating search results (replace this with actual search logic)
     const performSearch = (query, currentPage, lang) => {
@@ -156,7 +161,7 @@ function App() {
             <button data-testid="searchButton" onClick={event => searchImg()} style={{ position: 'absolute', left: '10px', top: '50%', transform: 'translateY(-50%)', backgroundColor: 'transparent', border: 'none', padding: '5px' }}>
             <img src="https://www.thinkafrica.fi/wp-content/uploads/2019/04/search-icon.png" style={{ width: '24px', height: '24px', verticalAlign: 'middle' }} />
             </button>
-            <input ref={searchInput} type="text" id="searchHere" style={{ borderRadius: '24px', width: '350px', padding: '10px', fontSize: '16px', border: '1px solid #dfe1e5', outline: 'none', paddingLeft: '40px' }} data-testid="searchHere" placeholder="  Search..." />
+            <input type="text" id="searchHere" style={{ borderRadius: '24px', width: '350px', padding: '10px', fontSize: '16px', border: '1px solid #dfe1e5', outline: 'none', paddingLeft: '40px' }} data-testid="searchHere" placeholder="  Search..." />
             </div>
             <p id="id1" style={{ whiteSpace: 'pre-line' }}>{resContent}</p>
     
@@ -200,6 +205,6 @@ function App() {
             )}
         </div>
     );
-}
+                        }    
 
 export default App;
