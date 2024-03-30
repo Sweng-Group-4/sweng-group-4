@@ -147,6 +147,7 @@ import './searchBar.css'
             <input 
                 type="text" 
                 id="searchHere" 
+                data-testid="searchHere"
                 ref={searchInput} 
                 style={{ borderRadius: '24px', width: '350px', padding: '10px', fontSize: '16px', border: '1px solid #dfe1e5', outline: 'none', paddingLeft: '40px' }} 
                 placeholder="  Search..." 
