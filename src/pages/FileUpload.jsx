@@ -67,7 +67,25 @@ function App() {
                 <h1>Image Analyser</h1>
                 <p>Upload an image to analyse its content</p>
             </header>
-            <div className="background-image"></div>
+            <div className="background-image"
+            style={{
+                backgroundSize: 'cover',
+                backgroundAttachment: 'fixed',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: '#fff',
+                textAlign: 'center',
+                padding: '20px',
+                flexDirection: 'column',
+                position: 'fixed',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: '100%'
+            }}>
+                
+            </div>
             <div className="app-content">
                 <input
                     type="file"
