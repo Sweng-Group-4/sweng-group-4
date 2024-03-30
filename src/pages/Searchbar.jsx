@@ -3,17 +3,7 @@ import { Button, Form } from 'react-bootstrap';
 import './fileUpload.css';
 import './searchBar.css'
 
-// added for HTTP Request from React to Flask
-
-
-// class App extends React.Component { 
-//     constructor(props) {
-//             super(props);
-//             this.state = {apiResponse: ""};
-//         }
-// if I include the above and get rid of the App(), the constants would have to be declared outside of the component
-    function App() {
-    
+function App() {
     const searchInput = useRef(null);
     const [searchResults, setSearchResults] = useState([]);
     const [page, setPage] = useState(1);
@@ -22,51 +12,79 @@ import './searchBar.css'
     const [loading, setLoading] = useState(false);
     const [language, setLanguage] = useState('en'); // Default language is English
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
-
-
-
-    // added for HTTP Request from React to Flask
-    // const callAPI = () => {
-    //     fetch("http://127.0.0.1:5000/search") //address for running on local device
-    //     .then(res => res.text())
-    //     .then(res => this.setState({ apiResponse: res}));
-    // };
-
-    var keepResults="";
+    const [captions, setCaptions] = useState({});
     const [resContent, setRes] = useState('');
     const [imgSrc, setImg] = useState([]);
     const [selectedImage, setSelectedImage] = useState(null);
 
+    useEffect(() => {
+        // Add event listener to detect Enter key press
+        const handleKeyPress = (event) => {
+            if (event.key === 'Enter') {
+                searchImg();
+            }
+        };
+        // Attach event listener to the input field
+        searchInput.current.addEventListener('keypress', handleKeyPress);
+        // Cleanup function to remove event listener
+        return () => {
+            searchInput.current.removeEventListener('keypress', handleKeyPress);
+        };
+    }, []);
+
     const advanceImage = () => {
         setCurrentImageIndex((prevIndex) => (prevIndex + 1) % imgSrc.length);
-      };
-      
-
-    
-      const searchImg = () => {
-        let searchName = document.getElementById("searchHere").value;
-        let searchLink = `http://127.0.0.1:5000/search_frontend?parameter=${searchName}`;
-        fetch(searchLink)
-        .then((result) => result.json())
-        .then((data) => {
-            const validImages = data.slice(0, 4).map(img => img.replace("public/", "/"));
-            console.log(validImages);
-            setImg(validImages);
-            setSelectedImage(null); // Reset selected image on new search
-        })
-        .catch(error => {
-            console.error('Error fetching the images:', error);
-            setErrorMsg('Failed to load images.');
-        });
     };
 
-    const handleKeyDown = (event) => {
-        if (event.key === 'Enter') {
-            searchImg();
+    const fetchCaptions = (imagePath) => {
+        if (!imagePath) {
+            console.log("no path");
+            return;
+        }
+    
+        try {
+            let s = `http://127.0.0.1:5000/getCaption?parameter=${imagePath}`;
+            fetch(s)
+            .then((result) => result.json())
+            .then((data) => {
+                console.log(data);
+            })
+            .catch(error => {
+                console.error('Error fetching the caption:', error);
+            });
+        } catch (error) {
+            console.log("error", error);
         }
     };
-    
+      
+    const searchImg = () => {
+        let searchName = document.getElementById("searchHere").value;
+        let translateSearchLink = `http://orosulli.pythonanywhere.com/?translate=${searchName}`;
+        
+        fetch(translateSearchLink)
+        .then((res) => res.json())
+        .then((data) => {
+            let translatedString = JSON.stringify(data);
+            let messyStringFixSoon = translatedString.replace("{", "").replace("}", "").replace(',','').replace(":","").replaceAll('"',"").replace("input","");
+            console.log(messyStringFixSoon);
+
+            let searchLink = `http://127.0.0.1:5000/search_frontend?parameter=${messyStringFixSoon}`;
+
+            fetch(searchLink)
+            .then((result) => result.json())
+            .then((data) => {
+                console.log(data);
+                const validImages = data.file.slice(0, 4).map(img => img.replace("public/", "/"));
+                console.log(validImages);
+                setImg(validImages);
+                setSelectedImage(null); // Reset selected image on new search
+            })
+            .catch(error => {
+                console.error('Error fetching the images:', error);
+                setErrorMsg('Failed to load images.');
+            });
+        })     
+    };
 
     // Simulating search results (replace this with actual search logic)
     const performSearch = (query, currentPage, lang) => {
@@ -105,18 +123,10 @@ import './searchBar.css'
         setSelectedImage(src); // Update state to selected image
     };
 
-
     const handleLanguageChange = (event) => {
         setLanguage(event.target.value);
     };
-    
-    // added for HTTP Request from React to Flask
-    // const componentDidMount = () => {
-    //     this.callAPI();
-    // };
-
-    
-    // render() { do we need render?
+   
     return (
         <div
         className='container'
@@ -139,20 +149,24 @@ import './searchBar.css'
             <h1 className='title' style={{color: 'white'}}>Search</h1>
             {errorMsg && <p className='error-msg'>{errorMsg}</p>}
             
-
+            <div className='click-to-search'>
+            </div>
+    
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative' }}>
-            <button data-testid="searchButton" style={{ position: 'absolute', left: '10px', top: '50%', transform: 'translateY(-50%)', backgroundColor: 'transparent', border: 'none', padding: '5px' }}>
+            <button data-testid="searchButton" onClick={event => searchImg()} style={{ position: 'absolute', left: '10px', top: '50%', transform: 'translateY(-50%)', backgroundColor: 'transparent', border: 'none', padding: '5px' }}>
             <img src="https://www.thinkafrica.fi/wp-content/uploads/2019/04/search-icon.png" style={{ width: '24px', height: '24px', verticalAlign: 'middle' }} />
             </button>
-            <input 
-                type="text" 
-                id="searchHere" 
-                data-testid="searchHere"
-                ref={searchInput} 
-                style={{ borderRadius: '24px', width: '350px', padding: '10px', fontSize: '16px', border: '1px solid #dfe1e5', outline: 'none', paddingLeft: '40px' }} 
-                placeholder="  Search..." 
-                onKeyDown={handleKeyDown} // Attach event listener for Enter key press
-            />
+            <input ref={searchInput} type="text" id="searchHere" style={{ borderRadius: '24px', width: '350px', padding: '10px', fontSize: '16px', border: '1px solid #dfe1e5', outline: 'none', paddingLeft: '40px' }} data-testid="searchHere" placeholder="  Search..." />
+            </div>
+            <p id="id1" style={{ whiteSpace: 'pre-line' }}>{resContent}</p>
+    
+            {/* Grid view */}
+            <div className="grid-container" style={{ display: selectedImage ? 'none' : 'grid' }}>
+                {imgSrc.map((src, index) => (
+                    <div key={index} className="grid-item" onClick={() => handleImageSelect(src)}>
+                        <img src={src} alt={`Search result ${index + 1}`} />
+                    </div>
+                ))}
             </div>
     
             {/* Expanded image view */}
@@ -186,6 +200,6 @@ import './searchBar.css'
             )}
         </div>
     );
-                        }    
+}
 
 export default App;
