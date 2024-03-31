@@ -11,6 +11,7 @@ import {
 import { NavLink } from 'react-router-dom';
 import fileUploadIcon from './fileuploadicon.png';
 import searchBarIcon from './seachbaricon.png';
+import logo from './jellyfishLogo.png'
 
 
 const Sidebar = ({children}) => {
@@ -47,7 +48,7 @@ const Sidebar = ({children}) => {
         <div className="container">
            <div style={{width: isOpen ? "200px" : "50px"}} className="sidebar">
                <div className="top_section" style={{ justifyContent: isOpen ? "space-between" : "center"}}>
-                   <h1 style={{display: isOpen ? "block" : "none"}} className="logo">Sweng Group 4</h1>
+               <img src={logo} alt="Sweng Group 4" style={{ display: isOpen ? "block" : "none", maxWidth: '100%', height: 'auto' }} className="logo" />
                    <div style={{marginLeft: isOpen ? "50px" : "0px"}} className="bars">
                        <FaBars onClick={toggle}/>
                    </div>
