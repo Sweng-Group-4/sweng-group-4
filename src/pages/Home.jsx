@@ -1,5 +1,6 @@
 import React from 'react';
 import './Home.css';
+import logo from '../logo.png'
 
 
 const About = () => {
@@ -20,7 +21,8 @@ const About = () => {
         width: '100%',
         height: '100%',}}>
             <div className="content-box" data-testid = "contentBox" style={{textAlign: 'center'}}>
-                <h1 className="title">We are Jellyfish!</h1> {/* Add a title */}
+              <h1 className="title">We are Jellyfish!</h1>
+               <img src={logo} alt="Logo" style={{ maxWidth: '300px', height: 'auto', marginTop: '-20px' }} />
                 <p className="description" style={{textAlign: 'center'}}> 
                    Multilingual AI image Search Engine
                 </p>
