@@ -56,8 +56,7 @@ import './searchBar.css'
         }
     };
       
-      const searchImg = () => {
-
+    const searchImg = () => {
         let searchName = document.getElementById("searchHere").value;
       
         let translateSearchLink = `http://orosulli.pythonanywhere.com/?translate=${searchName}`;
@@ -65,31 +64,32 @@ import './searchBar.css'
         fetch(translateSearchLink)
         .then((res) => res.json())
         .then((data) => {
-
+    
             let translatedString = JSON.stringify(data);
             let messyStringFixSoon = translatedString.replace("{", "").replace("}", "").replace(',','').replace(":","").replaceAll('"',"").replace("input","");
             console.log(messyStringFixSoon);
-
+    
             let searchLink = `http://127.0.0.1:5000/search_frontend?parameter=${messyStringFixSoon}`;
-
+    
             fetch(searchLink)
             .then((result) => result.json())
             .then((data) => {
                 console.log(data);
                 const validImages = data.file.slice(0, 4).map(img => img.replace("public/", "/"));
                 console.log(validImages);
-                setImg(validImages);
+                setImg(validImages); // Update images
+                setCaptions(data.caption); // Update captions with the data from the backend
                 setSelectedImage(null); // Reset selected image on new search
             })
             .catch(error => {
                 console.error('Error fetching the images:', error);
                 setErrorMsg('Failed to load images.');
             });
-
-
+    
+    
         })     
     };
-   
+    
 
     // Simulating search results (replace this with actual search logic)
     const performSearch = (query, currentPage, lang) => {
@@ -167,19 +167,25 @@ import './searchBar.css'
     
             {/* Grid view */}
             <div className="grid-container" style={{ display: selectedImage ? 'none' : 'grid' }}>
-                {imgSrc.map((src, index) => (
-                    <div key={index} className="grid-item" onClick={() => handleImageSelect(src)}>
-                        <img src={src} alt={`Search result ${index + 1}`} />
-                    </div>
-                ))}
-            </div>
+               {imgSrc.map((src, index) => (
+                <div key={index} className="grid-item" onClick={() => {
+                  setSelectedImage(src);
+               setCurrentImageIndex(index); // Directly set the current image index here
+               }}>
+            <img src={src} alt={`Search result ${index + 1}`} />
+             </div>
+           ))}
+           </div>
     
-            {/* Expanded image view */}
+            {/* Expanded image view with caption */}
             {selectedImage && (
-                <div className="expanded-image-viewer" onClick={() => setSelectedImage(null)}>
-                    <img src={selectedImage} alt="Expanded view" />
-                </div>
-            )}
+               <div className="expanded-image-viewer" onClick={() => setSelectedImage(null)}>
+                <img src={selectedImage} alt="Expanded view" />
+               {/* Caption directly below the image */}
+                 <p style={{ color: 'white', textAlign: 'center', marginTop: '20px' }}>{captions[currentImageIndex]}</p>
+               </div>
+               )}
+
     
             {loading ? (
                 <p className='loading'>Searching...</p>
