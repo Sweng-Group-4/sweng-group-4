@@ -19,11 +19,13 @@
 
 .expanded-image-viewer {
   display: flex;
+  flex-direction: column; 
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  margin-top: 20px; 
+  margin-top: 20px;
 }
+
 
 .expanded-image-viewer img {
   width: 600px; 
@@ -31,3 +33,9 @@
   object-fit: contain; 
  
 }
+.caption-text {
+  color: white;
+  text-align: center;
+  margin-top: 20px;
+}
+
