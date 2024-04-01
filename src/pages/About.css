@@ -40,6 +40,10 @@ p {
     padding: 0 20px;
 }
 
+.top-workers {
+    margin-top: 20px;
+}
+
 .worker {
     display: inline-block;
     vertical-align: top;
