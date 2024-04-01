@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
 .about-container {
     position: relative;
     display: flex;
@@ -17,11 +19,13 @@
 } */
 
 .title {
+    font-family: 'Inter';
     font-size: 4rem; /* Increase font size */
     margin-bottom: 20px;
 }
 
 .description {
+    font-family: 'Inter';
     font-size: 2.5rem; /* Increase font size */
     max-width: 800px;
     margin: 0 auto;
