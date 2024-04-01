@@ -31,13 +31,13 @@ const Sidebar = ({children}) => {
         },
         {
             path:"/search",
-            name:"Search Bar",
+            name:"Search",
             icon:<img src={searchBarIcon} alt="Search" style={{ width: '22px', height: '22px', marginLeft: '-1px', marginTop: '4px'}} />
         },
         {
             path:"/fileupload",
             name:"File Upload",
-            icon:<img src={fileUploadIcon} alt="Upload" style={{ width: '25px', height: '19px', marginLeft: '-2px', marginTop: '5px'}} />
+            icon:<img src={fileUploadIcon} alt="Upload" style={{ width: '24px', height: '18px', marginLeft: '-2px', marginTop: '5px'}} />
         },
         {
             path:"/Contact",
