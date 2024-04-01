@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect} from 'react';
 import { Button, Form } from 'react-bootstrap';
 import './fileUpload.css';
 import './searchBar.css'
+import otherSearchIcon from '../components/otherSearchIcon.png';
 
 // added for HTTP Request from React to Flask
 
@@ -165,7 +166,7 @@ import './searchBar.css'
     
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative' }}>
             <button data-testid="searchButton" onClick={event => searchImg()} style={{ position: 'absolute', left: '10px', top: '50%', transform: 'translateY(-50%)', backgroundColor: 'transparent', border: 'none', padding: '5px' }}>
-            <img src="https://www.thinkafrica.fi/wp-content/uploads/2019/04/search-icon.png" style={{ width: '24px', height: '24px', verticalAlign: 'middle' }} />
+            <img src={otherSearchIcon} style={{ width: '24px', height: '24px', verticalAlign: 'middle' }} />
             </button>
             <input type="text" id="searchHere" style={{ borderRadius: '24px', width: '350px', padding: '10px', fontSize: '16px', border: '1px solid #dfe1e5', outline: 'none', paddingLeft: '40px' }} data-testid="searchHere" placeholder="  Search..." onKeyUp={event => {handleKeyPress(event)}}/>
             </div>

@@ -10,7 +10,7 @@ import {
 }from "react-icons/fa";
 import { NavLink } from 'react-router-dom';
 import fileUploadIcon from './fileuploadicon.png';
-import searchBarIcon from './seachbaricon.png';
+import searchBarIcon from './searchbaricon.png';
 import logo from './jellyfishLogo.png'
 
 
