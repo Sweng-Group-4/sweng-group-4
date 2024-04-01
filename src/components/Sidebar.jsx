@@ -21,27 +21,27 @@ const Sidebar = ({children}) => {
         {
             path:"/",
             name:"Home",
-            icon:<FaTh/>
+            icon:<FaTh style={{marginLeft: '0px', marginTop: '4.5px'}}/>
         },
         {
             path:"/about",
             name:"About",
-            icon:<FaUserAlt/>
+            icon:<FaUserAlt style={{marginLeft: '0px', marginTop: '4px'}}/>
         },
         {
             path:"/search",
             name:"Search Bar",
-            icon:<img src={searchBarIcon} alt="Search" style={{ width: '24px', height: '24px', marginRight: '5px' }} />
+            icon:<img src={searchBarIcon} alt="Search" style={{ width: '22px', height: '22px', marginLeft: '-1px', marginTop: '4px'}} />
         },
         {
             path:"/fileupload",
             name:"File Upload",
-            icon:<img src={fileUploadIcon} alt="Upload" style={{ width: '24px', height: '18px', marginRight: '4px'}} />
+            icon:<img src={fileUploadIcon} alt="Upload" style={{ width: '25px', height: '19px', marginLeft: '-2px', marginTop: '5px'}} />
         },
         {
             path:"/Contact",
             name:"Contact",
-            icon:<FaCommentAlt/>
+            icon:<FaCommentAlt style={{marginTop: '5px'}}/>
         },
     ]
     return (
