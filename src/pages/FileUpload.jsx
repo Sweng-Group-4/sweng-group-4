@@ -95,7 +95,7 @@ function App() {
                 />
                 <input
                     type="text"
-                    placeholder="Enter the image description..."
+                    placeholder="Enter the image author..."
                     onChange={handleDescriptionChange}
                     value={textualDescription}
                     className="text-input"
