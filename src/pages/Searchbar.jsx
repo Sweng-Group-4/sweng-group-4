@@ -61,6 +61,8 @@ import otherSearchIcon from '../components/otherSearchIcon.png';
         let searchName = document.getElementById("searchHere").value;
       
         let translateSearchLink = `http://orosulli.pythonanywhere.com/?translate=${searchName}`;
+
+        setLoading(true);
         
         fetch(translateSearchLink)
         .then((res) => res.json())
@@ -85,6 +87,7 @@ import otherSearchIcon from '../components/otherSearchIcon.png';
             .catch(error => {
                 console.error('Error fetching the images:', error);
                 setErrorMsg('Failed to load images.');
+                setLoading(false);
             });
     
     
@@ -168,11 +171,13 @@ import otherSearchIcon from '../components/otherSearchIcon.png';
             <button data-testid="searchButton" onClick={event => searchImg()} style={{ position: 'absolute', left: '10px', top: '50%', transform: 'translateY(-50%)', backgroundColor: 'transparent', border: 'none', padding: '5px' }}>
             <img src={otherSearchIcon} style={{ width: '24px', height: '24px', verticalAlign: 'middle' }} />
             </button>
-            <input type="text" id="searchHere" style={{ borderRadius: '24px', width: '350px', padding: '10px', fontSize: '16px', border: '1px solid #dfe1e5', outline: 'none', paddingLeft: '50px' }} data-testid="searchHere" placeholder="Search for images..." onKeyUp={event => {handleKeyPress(event)}}/>
+            <input type="text" id="searchHere" style={{ borderRadius: '24px', width: '350px', padding: '10px', fontSize: '16px', border: '1px solid #dfe1e5', outline: 'none', paddingLeft: '50px' }} data-testid="searchHere" placeholder="Search for images..." onKeyUp={handleKeyPress}/>
             </div>
             <p id="id1" style={{ whiteSpace: 'pre-line' }}>{resContent}</p>
     
             {/* Grid view */}
+            {loading && <div className="loading-spinner"></div>}
+
             <div className="grid-container" style={{ display: selectedImage ? 'none' : 'grid' }}>
                {imgSrc.map((src, index) => (
                 <div key={index} className="grid-item" onClick={() => {
