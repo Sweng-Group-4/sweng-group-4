@@ -41,6 +41,12 @@ def search():
         return render_template('search.html', image_filenames=new_results)
     
 #temp for frontend testing
+# retrives 'parameter' from front end request
+# passes 'search_term' into search_db
+#   returns 'resultfiles' which contains file paths
+#   returns 'resultcaptions' which contains captions
+# json file contains keys 'file' and 'caption'
+
 @app.route('/search_frontend', methods=['GET'])
 def search_frontend():
     search_term = request.args.get('parameter')
