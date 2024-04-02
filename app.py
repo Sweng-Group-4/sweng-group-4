@@ -82,7 +82,15 @@ def get_image_caption():
     #            caption = matches[0]["caption"]
     #    return jsonify({'caption': caption})
     return "temp"
-    
+
+# if there has been a file uploaded
+#   retrieve the uploaded file named 'myFile'
+#   extract the caption from the text box on frontend
+#   prints debug statement to console
+#   prints caption from user to console
+#   calls create_uploaded_embedding
+#       embeds the uploaded image and appends the caption
+#     
 @app.route('/uploadImg', methods=['POST'])
 def uploadImg():
     try:
