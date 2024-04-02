@@ -16,6 +16,13 @@ CORS(app)
 def index():
     return render_template('search.html')
 
+# gets the search term from the frontend form 
+# searches database using 'search_db'
+#   'search_term' gets passed in
+# file paths include '/static/public/' instead of just 'public/'
+# renders template 'search.html'
+#   modified search results get passed as 'image_filenames'
+
 @app.route('/search', methods=['POST'])
 def search():
     if request.method == 'POST':
