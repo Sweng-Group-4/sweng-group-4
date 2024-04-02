@@ -54,6 +54,20 @@ def search_frontend():
     resultsfiles, resultscaptions = search_db(search_term)
     return jsonify({'file': resultsfiles, 'caption': resultscaptions})
 
+# prints debug statement to console
+#  returns temp
+# previous version:
+#   retrieved image path from selected image to enlarge
+#   if image path exists
+#       get matches from searching using search_db with the image path
+#       as a parameter
+#
+#       if there is a match, caption is retrieved from the vector
+#        gets assigned to caption variable
+#        returns a json response with key 'caption'
+#           maps to value of 'caption' variable
+
+# 
 @app.route('/getCaption', methods=['GET'])
 def get_image_caption():
     print("reached getCaption")
