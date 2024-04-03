@@ -59,11 +59,11 @@ import otherSearchIcon from '../components/otherSearchIcon.png';
       
     const searchImg = () => {
         let searchName = document.getElementById("searchHere").value;
-      
+    
         let translateSearchLink = `http://orosulli.pythonanywhere.com/?translate=${searchName}`;
-
+    
         setLoading(true);
-        
+    
         fetch(translateSearchLink)
         .then((res) => res.json())
         .then((data) => {
@@ -83,16 +83,18 @@ import otherSearchIcon from '../components/otherSearchIcon.png';
                 setImg(validImages); // Update images
                 setCaptions(data.caption); // Update captions with the data from the backend
                 setSelectedImage(null); // Reset selected image on new search
+                setLoading(false); // Set loading to false when results are loaded
             })
             .catch(error => {
                 console.error('Error fetching the images:', error);
                 setErrorMsg('Failed to load images.');
-                setLoading(false);
+                setLoading(false); // Set loading to false if there's an error
             });
     
     
         })     
     };
+    
     
 
     // Simulating search results (replace this with actual search logic)
