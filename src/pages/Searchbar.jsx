@@ -35,6 +35,13 @@ import otherSearchIcon from '../components/otherSearchIcon.png';
         setCurrentImageIndex((prevIndex) => (prevIndex + 1) % imgSrc.length);
       };
 
+      // if there is no imagePath
+      // print debug statement to console --> no path
+      // then try to follow path
+      // retrieve and put into json
+      // print debug statement to console
+      // if error, print error message
+      
       const fetchCaptions =  (imagePath) => {
         if (!imagePath) {
             console.log("no path");
