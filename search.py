@@ -58,9 +58,7 @@ def create_embeddings():
         ]
     )
 
-def search_db(query):
-    client = QdrantClient(path="vector_db")
-    model = SentenceTransformer('clip-ViT-B-32')
+def search_db(query, client, model):
 
     text_emb = model.encode(query)
 
@@ -75,12 +73,9 @@ def search_db(query):
 
 
 
-def create_uploaded_embeddings(image, caption):
+def create_uploaded_embeddings(image, caption, client, model):
 
     print("attempting upload")
-
-    client = QdrantClient(path="vector_db")
-    model = SentenceTransformer('clip-ViT-B-32')
 
     #client.recreate_collection(
     #    collection_name="animal_images",
