@@ -5,12 +5,16 @@ from PIL import Image
 from flask_cors import CORS
 from qdrant_client import QdrantClient
 from qdrant_client.models import Distance, VectorParams, PointStruct
+from sentence_transformers import SentenceTransformer, util
 import glob
 from tqdm import tqdm
 import os
 
 app = Flask(__name__)
 CORS(app)
+
+client = QdrantClient(path="vector_db")
+model = SentenceTransformer('clip-ViT-B-32')
 
 @app.route('/')
 def index():
@@ -30,7 +34,7 @@ def search():
         search_term = request.form['search_term']
         
         # Search the database
-        results = search_db(search_term)
+        results = search_db(search_term, client, model)
         new_results = []
         
         for result in results:
@@ -51,7 +55,7 @@ def search():
 def search_frontend():
     search_term = request.args.get('parameter')
      #= 'puppy'
-    resultsfiles, resultscaptions = search_db(search_term)
+    resultsfiles, resultscaptions = search_db(search_term, client, model)
     return jsonify({'file': resultsfiles, 'caption': resultscaptions})
 
 # prints debug statement to console

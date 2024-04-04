@@ -41,7 +41,7 @@ import otherSearchIcon from '../components/otherSearchIcon.png';
       // retrieve and put into json
       // print debug statement to console
       // if error, print error message
-      
+
       const fetchCaptions =  (imagePath) => {
         if (!imagePath) {
             console.log("no path");
@@ -63,7 +63,14 @@ import otherSearchIcon from '../components/otherSearchIcon.png';
             console.log("error", error);
         }
     };
-      
+    
+    // searchName retrieves value entered by user
+    // translateSearchLink sends user search query to be translated by the link
+    // search process has started
+    // sends get request and expects the response in json format
+    // cleans up the formatting of the link
+
+    // processes search results from the data
     const searchImg = () => {
         let searchName = document.getElementById("searchHere").value;
     
