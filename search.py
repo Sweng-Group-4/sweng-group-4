@@ -17,6 +17,17 @@ def get_filenames():
 #         matches.append({"filepath": hit.payload["filepath"], "caption": hit.payload.get("caption", "Caption not found")})
 #     return matches
 
+# loops over items in 'hits'
+# checks if payload dictionary of current 'hit' object contains key named 'caption'
+#   if not, will add description "from COCO dataset"
+# returns filenames and filedesc
+# 
+# retrieve_matches iterates over collection of hits, extracts file paths from payload
+#   stores them in a list 'filenames'
+# if caption exists --> stores in another list 'filedesc'
+# if no caption --> adds default description to 'filedesc'
+# returns both lists containing file paths and descriptions
+
 def retrieve_matches(hits):
     filenames = []
     filedesc = []
