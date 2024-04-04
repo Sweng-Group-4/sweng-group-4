@@ -109,7 +109,14 @@ import otherSearchIcon from '../components/otherSearchIcon.png';
         })     
     };
     
-    
+    // setTimeout sets a delay of 1 second before executing following code
+    //      5 results to display per page
+    //      20 total results available
+    //      start index gets calculated
+    //      array  of objects representing search results each with an id, title, and snippet
+    //  setSearchResults takes 'searchResults' with simulated search results
+    //  setTotalPages calculates the total number of pages to display search results
+    //      updates 'totalPages' variable
 
     // Simulating search results (replace this with actual search logic)
     const performSearch = (query, currentPage, lang) => {
