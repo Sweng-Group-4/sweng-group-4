@@ -80,6 +80,12 @@ def create_embeddings():
         ]
     )
 
+# text_emb encodes search query into vector representation
+# hits performs search operation in Qdrant database
+#   using encoded query vector
+#   specifies collection, 'animal images'
+# return retrieve_matches processes search results
+
 def search_db(query, client, model):
 
     text_emb = model.encode(query)
