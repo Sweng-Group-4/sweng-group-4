@@ -98,8 +98,12 @@ def search_db(query, client, model):
 
     return retrieve_matches(hits)
 
-
-
+# img_emb encoes uploaded image into vector representation
+# vectors.append appends the file path of the uploaded image
+#   and its corresponding image embedding
+# uploads an image along with its associated caption to Qdrant database
+# saves image to file system, encodes it into vector representation
+# updates the database with image vector and its metadata
 
 def create_uploaded_embeddings(image, caption, client, model):
 
@@ -130,6 +134,7 @@ def create_uploaded_embeddings(image, caption, client, model):
             PointStruct(
                 id=allpics,
                 vector=vector[1].tolist(),
+                # added caption payload
                 payload={"filepath": vector[0], "caption": caption},
                 # payload={"filepath": vector[0]}
             )
