@@ -41,6 +41,17 @@ def retrieve_matches(hits):
             filedesc.append("from COCO dataset")
     return filenames, filedesc
 
+# specifies path where Qdrant database is located
+#   uses clip-ViT-B-32 model
+#   'animal_images' is recreated in the Qdrant database
+# new vectors list will store pairs of file paths and their embeddings
+# loops over each file returned by get_filenames()
+# img_emb opens the image file and encodes it using Sentence Transformer model
+#   appends file path and its corresponding image embedding to 'vectors' list
+#   updates vectors in 'animal_images'
+#       creates a new PointStruct containing an id, vector, and payload
+#   objects are passed to client.upsert() to update the Qdrant database
+
 def create_embeddings():
 
     client = QdrantClient(path="vector_db")
