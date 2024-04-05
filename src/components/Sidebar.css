@@ -7,3 +7,9 @@
     margin-top: 5px;
     margin-left: 4px;
 }
+
+.sidebar {
+    background: rgba(0,0,0,0.3);
+    border-right: 0.3px solid grey;
+    backdrop-filter: blur(20px);
+}
