@@ -17,17 +17,6 @@ def get_filenames():
 #         matches.append({"filepath": hit.payload["filepath"], "caption": hit.payload.get("caption", "Caption not found")})
 #     return matches
 
-# loops over items in 'hits'
-# checks if payload dictionary of current 'hit' object contains key named 'caption'
-#   if not, will add description "from COCO dataset"
-# returns filenames and filedesc
-# 
-# retrieve_matches iterates over collection of hits, extracts file paths from payload
-#   stores them in a list 'filenames'
-# if caption exists --> stores in another list 'filedesc'
-# if no caption --> adds default description to 'filedesc'
-# returns both lists containing file paths and descriptions
-
 def retrieve_matches(hits):
     filenames = []
     filedesc = []
@@ -40,17 +29,6 @@ def retrieve_matches(hits):
             #filenames[-1] += "&desc:from COCO dataset"
             filedesc.append("from COCO dataset")
     return filenames, filedesc
-
-# specifies path where Qdrant database is located
-#   uses clip-ViT-B-32 model
-#   'animal_images' is recreated in the Qdrant database
-# new vectors list will store pairs of file paths and their embeddings
-# loops over each file returned by get_filenames()
-# img_emb opens the image file and encodes it using Sentence Transformer model
-#   appends file path and its corresponding image embedding to 'vectors' list
-#   updates vectors in 'animal_images'
-#       creates a new PointStruct containing an id, vector, and payload
-#   objects are passed to client.upsert() to update the Qdrant database
 
 def create_embeddings():
 
@@ -80,12 +58,6 @@ def create_embeddings():
         ]
     )
 
-# text_emb encodes search query into vector representation
-# hits performs search operation in Qdrant database
-#   using encoded query vector
-#   specifies collection, 'animal images'
-# return retrieve_matches processes search results
-
 def search_db(query, client, model):
 
     text_emb = model.encode(query)
@@ -98,12 +70,8 @@ def search_db(query, client, model):
 
     return retrieve_matches(hits)
 
-# img_emb encoes uploaded image into vector representation
-# vectors.append appends the file path of the uploaded image
-#   and its corresponding image embedding
-# uploads an image along with its associated caption to Qdrant database
-# saves image to file system, encodes it into vector representation
-# updates the database with image vector and its metadata
+
+
 
 def create_uploaded_embeddings(image, caption, client, model):
 
@@ -121,6 +89,12 @@ def create_uploaded_embeddings(image, caption, client, model):
     os.makedirs(save_path, exist_ok=True)
     image.save(os.path.join(save_path, image.filename))
 
+    image.seek(0)
+
+    save_path = os.path.join(BASE_DIR, 'static', 'public', 'animals', 'uploadedByUser')
+    os.makedirs(save_path, exist_ok=True)
+    image.save(os.path.join(save_path, image.filename))
+
 
     print("saved image")
     allpics = len(get_filenames())
@@ -134,7 +108,6 @@ def create_uploaded_embeddings(image, caption, client, model):
             PointStruct(
                 id=allpics,
                 vector=vector[1].tolist(),
-                # added caption payload
                 payload={"filepath": vector[0], "caption": caption},
                 # payload={"filepath": vector[0]}
             )
