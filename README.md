@@ -1,6 +1,15 @@
 # sweng-group-4
 Shutterstock - AI Powered Multilingual Image Search
 
+## Project Overview:
+You can access our 41k Mulitilingual Image Search at [Link](http://3.8.29.221/)
+Alternatively you can pull the repo, and follow the steps below under 'How to run' to locally run the program, this will only be the animals folder ~5k images.
+
+##Notes, 
+The website will not fully function correctly if you are on the Trinity network, this is due to Trinity blocking ports.
+
+The 41k Dataset which is in use (only in the EC2 public website above) is available to download at [2017 test images (41k)](https://cocodataset.org/#download), but bear in mind it is over 60GBs. 
+
 ## How to run:
 
 Firstly, clone the repository to your device.
@@ -71,7 +80,7 @@ Using the side nav bar, you can head to the search page. From here, you can sear
 
 ### Upload Images
 
-Using the side nav bar, you can head to the upload page. Select a photo from your local device, add a user caption describing the photo, and then press upload. You can then search for your uploaded photo using the search page.
+Using the side nav bar, you can head to the upload page. Select a photo from your local device, add a user author tag, and then press upload. You can then search for your uploaded photo using the search page.
 
 ### Translation
 
