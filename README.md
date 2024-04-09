@@ -19,7 +19,7 @@ Double check the path is correct, for example, you should find the dog/ images f
 sweng-group-4/public/animals/animals/dog/
 ```
 
-In the base repo directory (sweng-group-4/), run the following command to install the requirements:
+In the base repo directory (sweng-group-4/), run the following commands to install the requirements:
 
 ```
 pip install -r requirements.txt
