@@ -12,6 +12,27 @@ The website will not fully function correctly if you are on the Trinity network,
 
 The 41k Dataset which is in use (in the AWS hosted EC2, the public website link above) is available to download at [2017 test images (41k)](https://cocodataset.org/#download), bear in mind it is over 60GBs just to download it, and you will need to embed all the images. 
 
+## Project Features
+
+### Search Images
+
+Using the side nav bar, you can head to the search page. From here, you can search our temporary database of animals. For good queries, we suggest:
+
+1. "angry animal"
+2. "water animal"
+3. "a photo of a cat"
+
+### Upload Images
+
+Using the side nav bar, you can head to the upload page. Select a photo from your local device, add a user author tag, and then press upload. You can then search for your uploaded photo using the search page.
+
+### Translation
+
+Any user input in the search bar is automatically translated to English. Try the following queries:
+
+1. "die Katze" (German: the cat)
+2. "une photo d'un dauphin" (French: a photo of a dolphin)
+
 ## How to run:
 
 Firstly, clone the repository to your device.
@@ -69,25 +90,4 @@ npm start
 ```
 
 In the browser a page should open to view the project.
-
-## Project Features
-
-### Search Images
-
-Using the side nav bar, you can head to the search page. From here, you can search our temporary database of animals. For good queries, we suggest:
-
-1. "angry animal"
-2. "water animal"
-3. "a photo of a cat"
-
-### Upload Images
-
-Using the side nav bar, you can head to the upload page. Select a photo from your local device, add a user author tag, and then press upload. You can then search for your uploaded photo using the search page.
-
-### Translation
-
-Any user input in the search bar is automatically translated to English. Try the following queries:
-
-1. "die Katze" (German: the cat)
-2. "une photo d'un dauphin" (French: a photo of a dolphin)
 
