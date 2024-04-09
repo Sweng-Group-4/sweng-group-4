@@ -24,7 +24,9 @@ In the base repo directory (sweng-group-4/), run the following command to instal
 ```
 pip install -r requirements.txt
 ```
-
+```
+pip install flask-cors
+```
 Then, run the following command to embed the images (this will take a few minutes). (You may need to run python3 instead of python):
 
 ```
