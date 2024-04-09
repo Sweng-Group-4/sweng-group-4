@@ -8,9 +8,9 @@ Alternatively you can pull the repo, and follow the steps below under 'How to ru
 
 Notes:
 
-The website will not fully function correctly if you are on the Trinity network, this is due to Trinity blocking ports.
+The website will not fully function correctly if you are on the Trinity network, this is due to Trinity blocking various ports.
 
-The 41k Dataset which is in use (only in the EC2 public website above) is available to download at [2017 test images (41k)](https://cocodataset.org/#download), but bear in mind it is over 60GBs. 
+The 41k Dataset which is in use (in the AWS hosted EC2, the public website link above) is available to download at [2017 test images (41k)](https://cocodataset.org/#download), bear in mind it is over 60GBs just to download it, and you will need to embed all the images. 
 
 ## How to run:
 
