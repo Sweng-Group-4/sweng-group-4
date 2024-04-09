@@ -7,6 +7,7 @@ You can access our 41k Mulitilingual Image Search here: [http://3.8.29.221/](htt
 Alternatively you can pull the repo, and follow the steps below under 'How to run' to run the program locally, this will only support the animals data set which is ~5k images.
 
 Notes:
+
 The website will not fully function correctly if you are on the Trinity network, this is due to Trinity blocking ports.
 
 The 41k Dataset which is in use (only in the EC2 public website above) is available to download at [2017 test images (41k)](https://cocodataset.org/#download), but bear in mind it is over 60GBs. 
