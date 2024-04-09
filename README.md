@@ -2,7 +2,7 @@
 Shutterstock - AI Powered Multilingual Image Search
 
 ## Project Overview:
-You can access our 41k Mulitilingual Image Search at [Link](http://3.8.29.221/)
+You can access our 41k Mulitilingual Image Search at [Publicly Running Website](http://3.8.29.221/)
 Alternatively you can pull the repo, and follow the steps below under 'How to run' to locally run the program, this will only be the animals folder ~5k images.
 
 ##Notes, 
