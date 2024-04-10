@@ -11,11 +11,26 @@ def get_filenames():
                    recursive = True) 
     return files
 
+# def retrieve_matches(hits):
+#     matches = []
+#     for hit in hits:
+#         matches.append({"filepath": hit.payload["filepath"], "caption": hit.payload.get("caption", "Caption not found")})
+#     return matches
+
+# 
+
 def retrieve_matches(hits):
     filenames = []
+    filedesc = []
     for hit in hits:
         filenames.append(hit.payload["filepath"])
-    return filenames
+        if "caption" in hit.payload:
+            #filenames[-1] += "desc:" + hit.payload["caption"]
+            filedesc.append(hit.payload["caption"])
+        else:
+            #filenames[-1] += "&desc:from COCO dataset"
+            filedesc.append("from COCO dataset")
+    return filenames, filedesc
 
 def create_embeddings():
 
@@ -45,9 +60,7 @@ def create_embeddings():
         ]
     )
 
-def search_db(query):
-    client = QdrantClient(path="vector_db")
-    model = SentenceTransformer('clip-ViT-B-32')
+def search_db(query, client, model):
 
     text_emb = model.encode(query)
 
@@ -62,12 +75,9 @@ def search_db(query):
 
 
 
-def create_uploaded_embeddings(image):
+def create_uploaded_embeddings(image, caption, client, model):
 
     print("attempting upload")
-
-    client = QdrantClient(path="vector_db")
-    model = SentenceTransformer('clip-ViT-B-32')
 
     #client.recreate_collection(
     #    collection_name="animal_images",
@@ -100,7 +110,8 @@ def create_uploaded_embeddings(image):
             PointStruct(
                 id=allpics,
                 vector=vector[1].tolist(),
-                payload={"filepath": vector[0]},
+                payload={"filepath": vector[0], "caption": caption},
+                # payload={"filepath": vector[0]}
             )
             for idx, vector in enumerate(vectors)
         ]

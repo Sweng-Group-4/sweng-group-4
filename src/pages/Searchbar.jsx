@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect} from 'react';
 import { Button, Form } from 'react-bootstrap';
 import './fileUpload.css';
 import './searchBar.css'
+import otherSearchIcon from '../components/otherSearchIcon.png';
 
 // added for HTTP Request from React to Flask
 
@@ -22,16 +23,8 @@ import './searchBar.css'
     const [loading, setLoading] = useState(false);
     const [language, setLanguage] = useState('en'); // Default language is English
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
-
-
-
-    // added for HTTP Request from React to Flask
-    // const callAPI = () => {
-    //     fetch("http://127.0.0.1:5000/search") //address for running on local device
-    //     .then(res => res.text())
-    //     .then(res => this.setState({ apiResponse: res}));
-    // };
+    // adding for retieving captions
+    const [captions, setCaptions] = useState({});
 
     var keepResults="";
     const [resContent, setRes] = useState('');
@@ -41,25 +34,89 @@ import './searchBar.css'
     const advanceImage = () => {
         setCurrentImageIndex((prevIndex) => (prevIndex + 1) % imgSrc.length);
       };
-      
 
+      // if there is no imagePath
+      // print debug statement to console --> no path
+      // then try to follow path
+      // retrieve and put into json
+      // print debug statement to console
+      // if error, print error message
+
+      const fetchCaptions =  (imagePath) => {
+        if (!imagePath) {
+            console.log("no path");
+            return;
+        }
     
-      const searchImg = () => {
-        let searchName = document.getElementById("searchHere").value;
-        let searchLink = `http://127.0.0.1:5000/search_frontend?parameter=${searchName}`;
-        fetch(searchLink)
-        .then((result) => result.json())
-        .then((data) => {
-            const validImages = data.slice(0, 4).map(img => img.replace("public/", "/"));
-            setImg(validImages);
-            setSelectedImage(null); // Reset selected image on new search
-        })
-        .catch(error => {
-            console.error('Error fetching the images:', error);
-            setErrorMsg('Failed to load images.');
-        });
+        try {
+            let s = `http://127.0.0.1:5000/getCaption?parameter=${imagePath}`;
+            fetch(s)
+            .then((result) => result.json())
+            .then((data) => {
+                console.log(data);
+            })
+            .catch(error => {
+                console.error('Error fetching the caption:', error);
+            });
+
+        } catch (error) {
+            console.log("error", error);
+        }
     };
     
+    // searchName retrieves value entered by user
+    // translateSearchLink sends user search query to be translated by the link
+    // search process has started
+    // sends get request and expects the response in json format
+    // cleans up the formatting of the link
+
+    // processes search results from the data
+    const searchImg = () => {
+        let searchName = document.getElementById("searchHere").value;
+    
+        let translateSearchLink = `http://orosulli.pythonanywhere.com/?translate=${searchName}`;
+    
+        setLoading(true);
+    
+        fetch(translateSearchLink)
+        .then((res) => res.json())
+        .then((data) => {
+    
+            let translatedString = JSON.stringify(data);
+            let messyStringFixSoon = translatedString.replace("{", "").replace("}", "").replace(',','').replace(":","").replaceAll('"',"").replace("input","");
+            console.log(messyStringFixSoon);
+    
+            let searchLink = `http://127.0.0.1:5000/search_frontend?parameter=${messyStringFixSoon}`;
+    
+            fetch(searchLink)
+            .then((result) => result.json())
+            .then((data) => {
+                console.log(data);
+                const validImages = data.file.slice(0, 4).map(img => img.replace("public/", "/"));
+                console.log(validImages);
+                setImg(validImages); // Update images
+                setCaptions(data.caption); // Update captions with the data from the backend
+                setSelectedImage(null); // Reset selected image on new search
+                setLoading(false); // Set loading to false when results are loaded
+            })
+            .catch(error => {
+                console.error('Error fetching the images:', error);
+                setErrorMsg('Failed to load images.');
+                setLoading(false); // Set loading to false if there's an error
+            });
+    
+    
+        })     
+    };
+    
+    // setTimeout sets a delay of 1 second before executing following code
+    //      5 results to display per page
+    //      20 total results available
+    //      start index gets calculated
+    //      array  of objects representing search results each with an id, title, and snippet
+    //  setSearchResults takes 'searchResults' with simulated search results
+    //  setTotalPages calculates the total number of pages to display search results
+    //      updates 'totalPages' variable
 
     // Simulating search results (replace this with actual search logic)
     const performSearch = (query, currentPage, lang) => {
@@ -98,18 +155,16 @@ import './searchBar.css'
         setSelectedImage(src); // Update state to selected image
     };
 
-
     const handleLanguageChange = (event) => {
         setLanguage(event.target.value);
     };
-    
-    // added for HTTP Request from React to Flask
-    // const componentDidMount = () => {
-    //     this.callAPI();
-    // };
 
-    
-    // render() { do we need render?
+    const handleKeyPress = (event) => {
+        if (event.key == "Enter") {
+            searchImg();
+        }
+    }
+   
     return (
         <div
         className='container'
@@ -137,27 +192,35 @@ import './searchBar.css'
     
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative' }}>
             <button data-testid="searchButton" onClick={event => searchImg()} style={{ position: 'absolute', left: '10px', top: '50%', transform: 'translateY(-50%)', backgroundColor: 'transparent', border: 'none', padding: '5px' }}>
-            <img src="https://www.thinkafrica.fi/wp-content/uploads/2019/04/search-icon.png" style={{ width: '24px', height: '24px', verticalAlign: 'middle' }} />
+            <img src={otherSearchIcon} style={{ width: '24px', height: '24px', verticalAlign: 'middle' }} />
             </button>
-            <input type="text" id="searchHere" style={{ borderRadius: '24px', width: '350px', padding: '10px', fontSize: '16px', border: '1px solid #dfe1e5', outline: 'none', paddingLeft: '40px' }} data-testid="searchHere" placeholder="  Search..." />
+            <input type="text" id="searchHere" style={{ borderRadius: '24px', width: '350px', padding: '10px', fontSize: '16px', border: '1px solid #dfe1e5', outline: 'none', paddingLeft: '50px' }} data-testid="searchHere" placeholder="Search for images..." onKeyUp={handleKeyPress}/>
             </div>
             <p id="id1" style={{ whiteSpace: 'pre-line' }}>{resContent}</p>
     
             {/* Grid view */}
+            {loading && <div className="loading-spinner"></div>}
+
             <div className="grid-container" style={{ display: selectedImage ? 'none' : 'grid' }}>
-                {imgSrc.map((src, index) => (
-                    <div key={index} className="grid-item" onClick={() => handleImageSelect(src)}>
-                        <img src={src} alt={`Search result ${index + 1}`} />
-                    </div>
-                ))}
-            </div>
+               {imgSrc.map((src, index) => (
+                <div key={index} className="grid-item" onClick={() => {
+                  setSelectedImage(src);
+               setCurrentImageIndex(index); // Directly set the current image index here
+               }}>
+            <img src={src} alt={`Search result ${index + 1}`} />
+             </div>
+           ))}
+           </div>
     
-            {/* Expanded image view */}
+            {/* Expanded image view with caption */}
             {selectedImage && (
-                <div className="expanded-image-viewer" onClick={() => setSelectedImage(null)}>
-                    <img src={selectedImage} alt="Expanded view" />
-                </div>
-            )}
+               <div className="expanded-image-viewer" onClick={() => setSelectedImage(null)}>
+                <img src={selectedImage} alt="Expanded view" />
+               {/* Caption directly below the image */}
+                 <p style={{ color: 'white', textAlign: 'center', marginTop: '20px' }}>{captions[currentImageIndex]}</p>
+               </div>
+               )}
+
     
             {loading ? (
                 <p className='loading'>Searching...</p>
@@ -186,4 +249,3 @@ import './searchBar.css'
                         }    
 
 export default App;
-

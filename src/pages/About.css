@@ -1,7 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
 .about-container {
     position: relative;
     background-size: cover;
     background-position: center;
+}
+
+h1 {
+    font-family: 'Inter';
+}
+
+p {
+    font-family: 'Inter';
 }
 
 .orange-box {
@@ -17,15 +27,21 @@
 }
 
 .title {
+    font-family: 'Inter';
     font-size: 3rem;
     margin-bottom: 20px;
 }
 
 .description {
+    font-family: 'Inter';
     font-size: 1.2rem;
     max-width: 800px;
     margin: 0 auto;
     padding: 0 20px;
+}
+
+.top-workers {
+    margin-top: 20px;
 }
 
 .worker {
@@ -43,9 +59,11 @@
 }
 
 .name {
+    font-family: 'Inter';
     font-weight: bold;
 }
 
 .worker-description {
+    font-family: 'Inter';
     font-size: 0.8rem; 
 }

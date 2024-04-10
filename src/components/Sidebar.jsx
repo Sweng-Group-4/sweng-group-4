@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './Sidebar.css';
 import {
     FaTh,
     FaBars,
@@ -9,6 +10,9 @@ import {
     //FaThList
 }from "react-icons/fa";
 import { NavLink } from 'react-router-dom';
+import fileUploadIcon from './fileuploadicon.png';
+import searchBarIcon from './searchbaricon.png';
+import logo from './jellyfishLogo.png'
 
 
 const Sidebar = ({children}) => {
@@ -18,34 +22,34 @@ const Sidebar = ({children}) => {
         {
             path:"/",
             name:"Home",
-            icon:<FaTh/>
+            icon:<FaTh style={{marginLeft: '0px', marginTop: '4.5px'}}/>
         },
         {
             path:"/about",
             name:"About",
-            icon:<FaUserAlt/>
+            icon:<FaUserAlt style={{marginLeft: '0px', marginTop: '4px'}}/>
         },
         {
             path:"/search",
-            name:"Search Bar",
-            icon:<img src="https://cdn.discordapp.com/attachments/1196390810632065084/1219624546282504292/search-icon-white-png-10.jpg?ex=660bfadf&is=65f985df&hm=0010cc9919baad4e9aa1ea080af42964d4ce9377bc8a1e21beb1cfd3ff9e9b48&" alt="Search" style={{ width: '24px', height: '24px' }} />
+            name:"Search",
+            icon:<img src={searchBarIcon} alt="Search" style={{ width: '22px', height: '22px', marginLeft: '-1px', marginTop: '4px'}} />
         },
         {
             path:"/fileupload",
             name:"File Upload",
-            icon:<img src="https://cdn2.iconfinder.com/data/icons/cloud-data-glyph/64/166_cloud-data-computing-arrow-technology-upload-512.png" alt="Upload" style={{ width: '24px', height: '24px' }} />
+            icon:<img src={fileUploadIcon} alt="Upload" style={{ width: '24px', height: '18px', marginLeft: '-2px', marginTop: '5px'}} />
         },
         {
             path:"/Contact",
             name:"Contact",
-            icon:<FaCommentAlt/>
+            icon:<FaCommentAlt style={{marginTop: '5px'}}/>
         },
     ]
     return (
         <div className="container">
            <div style={{width: isOpen ? "200px" : "50px"}} className="sidebar">
-               <div className="top_section">
-                   <h1 style={{display: isOpen ? "block" : "none"}} className="logo">Sweng Group 4</h1>
+               <div className="top_section" style={{ justifyContent: isOpen ? "space-between" : "center"}}>
+               <img src={logo} alt="Sweng Group 4" style={{ display: isOpen ? "block" : "none", maxWidth: '100%', height: 'auto' }} className="logo" />
                    <div style={{marginLeft: isOpen ? "50px" : "0px"}} className="bars">
                        <FaBars onClick={toggle}/>
                    </div>
@@ -65,3 +69,4 @@ const Sidebar = ({children}) => {
 };
 
 export default Sidebar;
+
