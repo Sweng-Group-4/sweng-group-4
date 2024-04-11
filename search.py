@@ -17,8 +17,6 @@ def get_filenames():
 #         matches.append({"filepath": hit.payload["filepath"], "caption": hit.payload.get("caption", "Caption not found")})
 #     return matches
 
-# 
-
 def retrieve_matches(hits):
     filenames = []
     filedesc = []
