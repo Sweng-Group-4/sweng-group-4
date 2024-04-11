@@ -3,3 +3,4 @@ Pillow==10.2.0
 qdrant_client==1.7.3
 sentence_transformers==2.3.0
 tqdm==4.64.0
+pytest

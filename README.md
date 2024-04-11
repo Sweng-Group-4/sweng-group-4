@@ -90,4 +90,3 @@ npm start
 ```
 
 In the browser a page should open to view the project.
-
