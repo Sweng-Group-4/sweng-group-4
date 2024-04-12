@@ -105,7 +105,7 @@ def uploadImg():
             print ("got a caption")
             print(caption)
 
-            create_uploaded_embeddings(uploaded_image, caption)
+            create_uploaded_embeddings(uploaded_image, caption, client, model)
 
             return 'Success', 200
     except Exception as e:
