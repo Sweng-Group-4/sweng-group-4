@@ -14,7 +14,7 @@ Notes:
 
 The website will not fully function correctly if you are on the Trinity network, this is due to Trinity blocking various ports.
 
-The 41k Dataset which is in use (in the AWS hosted EC2, the public website link above) is available to download at [2017 test images (41k)](https://cocodataset.org/#download), bear in mind it is over 60GBs just to download it, and you will need to embed all the images. 
+The 41k Dataset which is in use (in the AWS hosted EC2, the public website link above) is available to download at [2017 test images (41k)](https://cocodataset.org/#download), bear in mind it is over 6GBs just to download it.
 
 ## Project Features
 
